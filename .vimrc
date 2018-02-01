@@ -3,7 +3,7 @@ syntax on
 set number
 set backspace=indent,eol,start
 set shiftwidth=2
-
+set encoding=utf8
 " Tab
 set expandtab
 set tabstop=2
@@ -51,6 +51,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'rizzatti/dash.vim' 
+Plugin 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -121,6 +122,6 @@ let g:vdebug_options['path_maps'] = {'/var/www/domains/com.dealerinspire.wordpre
 let g:vdebug_options['server'] = ""
 
 " Powerline
-set guifont=Melso\ LG\ L\ DZ\ Regular\ for\ Powerline\ 10
+set guifont=MelsoLGLDZ\ Nerd\ Font\ 10
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
