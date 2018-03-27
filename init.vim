@@ -1,17 +1,14 @@
 " Basic Settings
-syntax on
 set number
 set backspace=indent,eol,start
 set shiftwidth=2
 set encoding=utf8
 set clipboard=unnamed
-"set t_ut=
 filetype plugin indent on
 " Unhide quotes
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
 set magic
-set t_Co=256
 
 " Plugins
 call plug#begin('~/.nvim/plugged')
@@ -31,6 +28,9 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'othree/yajs.vim'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 " Syntax Linter 
@@ -47,21 +47,21 @@ let g:syntastic_check_on_wq = 0
 let g:deoplete#enable_at_startup = 1
 
 " theme config
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
     set termguicolors
-  endif
 endif
 
-set t_8b=^[[48;2;%lu;%lu;%lum
-set t_8f=^[[38;2;%lu;%lu;%lum
 set background=dark
 colorscheme one
+syntax on
 let g:airline_theme='one'
-let g:one_allow_italics = 1
+set t_8b=^[[48;2;%lu;%lu;%lum
+set t_8f=^[[38;2;%lu;%lu;%lum]]]]
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
 
 " Nerd Tree
 autocmd StdinReadPre * let s:std_in=1
