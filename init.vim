@@ -82,6 +82,6 @@ let g:ctrlp_custom_ignore = {
 \}
 
 " Fonts
-set guifont=MelsoLGLDZ\ Nerd\ Font\ 10
+set guifont=*
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'

@@ -122,6 +122,6 @@ let g:vdebug_options['path_maps'] = {'/var/www/domains/com.dealerinspire.wordpre
 let g:vdebug_options['server'] = ""
 
 " Powerline
-set guifont=MelsoLGLDZ\ Nerd\ Font\ 10
+set guifont=*
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
