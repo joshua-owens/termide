@@ -33,6 +33,7 @@ Plug 'ap/vim-css-color'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'styled-components/vim-styled-components'
+Plug 'ekalinin/dockerfile.vim'
 call plug#end()
 
 " Syntax Linter 
