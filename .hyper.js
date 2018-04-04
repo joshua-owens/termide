@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'canary',
 
     // default font size in pixels for all tabs
-    fontSize: 10,
+    fontSize: 11,
 
     // font family with optional fallbacks
     fontFamily: '"MesloLGLDZ Nerd Font", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -120,7 +120,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'hyper-one-dark'
+    'hyper-vscode-dark'
   ],
 
   // in development, you can create a directory under

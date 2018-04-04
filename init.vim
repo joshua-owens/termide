@@ -14,7 +14,7 @@ set magic
 call plug#begin('~/.nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rakr/vim-one'
+Plug 'tomasiser/vim-code-dark'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -57,10 +57,11 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-set background=dark
-colorscheme one
+set t_Co=256
+set t_ut=
+colorscheme codedark
 syntax on
-let g:airline_theme='one'
+let g:airline_theme='codedark'
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum]]]]
 hi! Normal ctermbg=NONE guibg=NONE
