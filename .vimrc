@@ -4,6 +4,11 @@ set number
 set backspace=indent,eol,start
 set shiftwidth=2
 set encoding=utf8
+set clipboard=unnamed
+" Unhide quotes
+set conceallevel=0
+let g:vim_json_syntax_conceal = 0
+set magic
 " Tab
 set expandtab
 set tabstop=2
@@ -27,18 +32,15 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'elzr/vim-json'
 Plugin 'mileszs/ack.vim'
 Plugin 'yggdroot/indentline'
 Plugin 'valloric/youcompleteme'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'YorickPeterse/happy_hacking.vim'
-Plugin 'danilo-augusto/vim-afterglow'
 Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rakr/vim-one'
 Plugin 'joonty/vdebug'
 Plugin 'wakatime/vim-wakatime'
@@ -50,8 +52,9 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
-Plugin 'rizzatti/dash.vim' 
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'rhysd/devdocs.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,9 +71,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Color Scheme
-let g:airline_theme='one'
 colorscheme one
-set background=dark " for the dark version
+"set background=dark " for the dark version
+set t_Co=256
 
 if (empty($TMUX))
   if (has("nvim"))
@@ -113,6 +116,11 @@ let g:NERDTreeShowHidden=1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|vendor|docs)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
 " VDEBUG
 if !exists('g:vdebug_options')
     let g:vdebug_options={}
@@ -122,6 +130,9 @@ let g:vdebug_options['path_maps'] = {'/var/www/domains/com.dealerinspire.wordpre
 let g:vdebug_options['server'] = ""
 
 " Powerline
-set guifont=*
+set guifont=MelsoLGLDZ\ Nerd\ Font\ 10
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
+
+" DevDocs
+nmap K <Plug>(devdocs-under-cursor)
