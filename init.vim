@@ -29,10 +29,16 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 Plug 'styled-components/vim-styled-components'
 Plug 'ekalinin/dockerfile.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'jacoborus/tender.vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'othree/html5.vim'
+Plug 'twitter/hogan.js'
 call plug#end()
 
 " Syntax Linter 
@@ -58,9 +64,9 @@ endif
 
 set t_Co=256
 set t_ut=
-colorscheme codedark
+colorscheme onehalfdark
 syntax on
-let g:airline_theme='codedark'
+let g:airline_theme='onehalfdark'
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum]]]]
 hi! Normal ctermbg=NONE guibg=NONE
