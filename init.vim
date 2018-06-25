@@ -36,7 +36,6 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'jacoborus/tender.vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'othree/html5.vim'
 Plug 'twitter/hogan.js'
 call plug#end()
@@ -64,9 +63,9 @@ endif
 
 set t_Co=256
 set t_ut=
-colorscheme onehalfdark
+colorscheme codedark
 syntax on
-let g:airline_theme='onehalfdark'
+let g:airline_theme='codedark'
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum]]]]
 hi! Normal ctermbg=NONE guibg=NONE
