@@ -51,9 +51,10 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git mercurial)
 
 source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 
@@ -114,7 +115,7 @@ alias fca="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/
 alias specialoffers="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/dealer-inspire-special-offers"
 alias invdis="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/dealerinspire-inventory-display"
 alias ci="code-insiders"
-# SSH Shortcuts 
+# SSH Shortcuts
 alias pod1='ssh jowens@deploy.pod1.dealerinspire.com'
 alias pod2='ssh jowens@deploy.pod2.dealerinspire.com'
 alias pod3='ssh jowens@deploy.pod3.dealerinspire.com'
@@ -136,7 +137,7 @@ export TERM=xterm-256color
 
 # Tail debug.log in the wp-content folder
 alias debuglog='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content && tail -f debug.log'
-
+alias dbug='open -a "Console" ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/debug.log'
 # navigate to vagrant folder
 alias vf='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress'
 
@@ -248,6 +249,7 @@ export PATH="/Users/joshowens/anaconda/bin:$PATH"
 export NVM_DIR="/Users/joshowens/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 alias neo="nvim"
+alias vim="nvim"
 
 
 
@@ -255,3 +257,6 @@ alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
 
 # added by travis gem
 [ -f /Users/joshowens/.travis/travis.sh ] && source /Users/joshowens/.travis/travis.sh
+
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
