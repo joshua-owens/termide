@@ -98,7 +98,7 @@ alias themes='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-conte
 alias chug='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes/DealerInspireCommonTheme && gulp'
 alias train='cd ~/code/training_tool/'
 alias codewars='cd ~/code/codewars/'
-alias bash='cd && code .bash_profile'
+alias bashrc='cd && code .bash_profile'
 alias dimg='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes/DealerInspireDealerTheme/images && open -a imageoptim .'
 alias sf='cd ~/code/salesforce-extension'
 alias openzsh='code ~/.zshrc'
@@ -132,8 +132,12 @@ alias pod13='ssh jowens@deploy.pod13.dealerinspire.com'
 alias dev='ssh jowens@a.dev.dealerinspire.com'
 alias ..='cd ..'
 
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 # Tmux
 export TERM=xterm-256color
+
 
 # Tail debug.log in the wp-content folder
 alias debuglog='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content && tail -f debug.log'
@@ -260,3 +264,5 @@ alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
 
 export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+
+alias ag='ag --smart-case --pager="less -R" --color-path 36 --color-match "1;46" --color-line-number 35 $@'

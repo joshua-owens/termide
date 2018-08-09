@@ -40,7 +40,7 @@ Plug 'othree/html5.vim'
 Plug 'twitter/hogan.js'
 call plug#end()
 
-" Syntax Linter 
+" Syntax Linter
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -68,8 +68,7 @@ syntax on
 let g:airline_theme='codedark'
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum]]]]
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 
 " Nerd Tree
 autocmd StdinReadPre * let s:std_in=1
@@ -79,6 +78,9 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeShowHidden=1
+
+" TagBar
+nmap <C-o> :TagbarToggle<CR>
 
 " CTRLP
 let g:ctrlp_map = '<c-p>'
