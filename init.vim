@@ -14,7 +14,6 @@ set magic
 call plug#begin('~/.nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tomasiser/vim-code-dark'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -31,13 +30,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
-Plug 'styled-components/vim-styled-components'
 Plug 'ekalinin/dockerfile.vim'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'jacoborus/tender.vim'
-Plug 'othree/html5.vim'
-Plug 'twitter/hogan.js'
+Plug 'jdsimcoe/abstract.vim'
+Plug 'w0rp/ale'
 call plug#end()
 
 " Syntax Linter
@@ -53,19 +49,12 @@ let g:syntastic_check_on_wq = 0
 " deoplete config
 let g:deoplete#enable_at_startup = 1
 
-" theme config
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-    set termguicolors
-endif
-
+filetype plugin indent on
 set t_Co=256
 set t_ut=
-colorscheme codedark
 syntax on
-let g:airline_theme='codedark'
+colorscheme abstract
+let g:airline_theme='abstract'
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum]]]]
 hi Normal guibg=NONE ctermbg=NONE
@@ -95,3 +84,8 @@ let g:ctrlp_custom_ignore = {
 set guifont=*
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+
+" EditorConfig
+ let g:EditorConfig_exec_path = '/usr/local/Cellar/editorconfig/0.12.2/bin/editorconfig'

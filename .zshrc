@@ -55,7 +55,6 @@ plugins=(git mercurial)
 
 source $ZSH/oh-my-zsh.sh
 
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -129,6 +128,10 @@ alias pod10='ssh jowens@deploy.pod10.dealerinspire.com'
 alias pod11='ssh jowens@deploy.pod11.dealerinspire.com'
 alias pod12='ssh jowens@deploy.pod12.dealerinspire.com'
 alias pod13='ssh jowens@deploy.pod13.dealerinspire.com'
+alias pod14='ssh jowens@deploy.pod14.dealerinspire.com'
+alias pod15='ssh jowens@deploy.pod15.dealerinspire.com'
+alias pod16='ssh jowens@deploy.pod16.dealerinspire.com'
+alias pod17='ssh jowens@deploy.pod17.dealerinspire.com'
 alias dev='ssh jowens@a.dev.dealerinspire.com'
 alias ..='cd ..'
 
@@ -136,14 +139,13 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Tmux
-export TERM=xterm-256color
-
+export TERM=xterm-256color-italic
 
 # Tail debug.log in the wp-content folder
 alias debuglog='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content && tail -f debug.log'
 alias dbug='open -a "Console" ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/debug.log'
 # navigate to vagrant folder
-alias vf='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress'
+alias vf='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress.local'
 
 #########################################################
 # Apps and Tools
@@ -163,8 +165,8 @@ alias gdls='git ls-files --deleted'
 alias gmra='git rm $(git ls-files --deleted)'
 
 # Vagrant commands
-alias vup='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress && vagrant up'
-alias vssh='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress && vagrant ssh'
+alias vup='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress.local && vagrant up'
+alias vssh='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress.local && vagrant ssh'
 
 # Start a sass watch manually (works in dealer theme and common)
 alias sasswatch="sass --watch css:css --style=compressed"
@@ -244,7 +246,6 @@ export PATH
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-
 # added by Anaconda3 4.2.0 installer
 export PATH="/Users/joshowens/anaconda/bin:$PATH"
 
@@ -255,8 +256,6 @@ export NVM_DIR="/Users/joshowens/.nvm"
 alias neo="nvim"
 alias vim="nvim"
 
-
-
 alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
 
 # added by travis gem
@@ -266,3 +265,13 @@ export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
 
 alias ag='ag --smart-case --pager="less -R" --color-path 36 --color-match "1;46" --color-line-number 35 $@'
+
+autoload bashcompinit
+bashcompinit
+
+# wp docker
+export PATH="/Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin:$PATH"
+[ -f /Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc ] && source /Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
