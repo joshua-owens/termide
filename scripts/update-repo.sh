@@ -17,6 +17,7 @@ then
 
   # Get updated version of .tmux.conf 
   cp ~/.tmux.conf ../.tmux.conf
+  cp ~/.tmux.conf.local ../.tmux.conf.local
   echo "[92m.tmux.conf updated"
 
   # Get updated version of .zshrc
