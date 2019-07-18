@@ -7,7 +7,7 @@ export ZSH=/Users/joshowens/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -69,7 +69,7 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='nvim'
+export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -132,6 +132,9 @@ alias pod14='ssh jowens@deploy.pod14.dealerinspire.com'
 alias pod15='ssh jowens@deploy.pod15.dealerinspire.com'
 alias pod16='ssh jowens@deploy.pod16.dealerinspire.com'
 alias pod17='ssh jowens@deploy.pod17.dealerinspire.com'
+alias pod18='ssh jowens@deploy.pod18.dealerinspire.com'
+alias pod19='ssh jowens@deploy.pod19.dealerinspire.com'
+alias pod20='ssh jowens@deploy.pod20.dealerinspire.com'
 alias dev='ssh jowens@a.dev.dealerinspire.com'
 alias ..='cd ..'
 
@@ -140,6 +143,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Tmux
 export TERM=xterm-256color-italic
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 # Tail debug.log in the wp-content folder
 alias debuglog='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content && tail -f debug.log'
@@ -249,13 +254,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # added by Anaconda3 4.2.0 installer
 export PATH="/Users/joshowens/anaconda/bin:$PATH"
 
-#
-
-export NVM_DIR="/Users/joshowens/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-alias neo="nvim"
-alias vim="nvim"
-
 alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
 
 # added by travis gem
@@ -272,6 +270,10 @@ bashcompinit
 # wp docker
 export PATH="/Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin:$PATH"
 [ -f /Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc ] && source /Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc
+export PATH="/Users/joshowens/code/feature-dev-shared-scripts/devtools-cli:$PATH"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# Python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
