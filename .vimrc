@@ -49,6 +49,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'joshdick/onedark.vim'
 Plugin 'fatih/vim-go'
+Plugin 'rainglow/vim'
+Plugin 'arcticicestudio/nord-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -65,9 +67,14 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Color Scheme
-colorscheme onedark 
-let g:airline_theme='onedark'
+colorscheme nord 
+let g:airline_theme='nord'
 "set t_Co=256
+
+" Highlight ES6 template strings
+hi link javaScriptTemplateDelim String
+hi link javaScriptTemplateVar Text
+hi link javaScriptTemplateString String
 
 " Ale
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
