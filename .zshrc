@@ -135,6 +135,9 @@ alias pod17='ssh jowens@deploy.pod17.dealerinspire.com'
 alias pod18='ssh jowens@deploy.pod18.dealerinspire.com'
 alias pod19='ssh jowens@deploy.pod19.dealerinspire.com'
 alias pod20='ssh jowens@deploy.pod20.dealerinspire.com'
+alias pod21='ssh jowens@deploy.pod21.dealerinspire.com'
+alias pod22='ssh jowens@deploy.pod22.dealerinspire.com'
+alias pod23='ssh jowens@deploy.pod23.dealerinspire.com'
 alias dev='ssh jowens@a.dev.dealerinspire.com'
 alias ..='cd ..'
 
@@ -259,9 +262,6 @@ alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
 # added by travis gem
 [ -f /Users/joshowens/.travis/travis.sh ] && source /Users/joshowens/.travis/travis.sh
 
-export PATH="/usr/local/opt/php@7.1/bin:$PATH"
-export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
-
 alias ag='ag --smart-case --pager="less -R" --color-path 36 --color-match "1;46" --color-line-number 35 $@'
 
 autoload bashcompinit
@@ -277,3 +277,9 @@ export PATH="/Users/joshowens/code/feature-dev-shared-scripts/devtools-cli:$PATH
 
 # Python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+# export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+export PATH=~/.composer/vendor/bin:$PATH
+export PATH="$PATH:/usr/local/bin"
