@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/joshowens/.oh-my-zsh
+export ZSH=/Users/jowens/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -145,7 +145,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Tmux
-export TERM=xterm-256color-italic
+# export TERM=xterm-256color-italic
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
@@ -247,7 +247,7 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 
 ##
-# Your previous /Users/joshowens/.bash_profile file was backed up as /Users/joshowens/.bash_profile.macports-saved_2016-10-26_at_13:16:53
+# Your previous /Users/jowens/.bash_profile file was backed up as /Users/jowens/.bash_profile.macports-saved_2016-10-26_at_13:16:53
 ##
 
 # MacPorts Installer addition on 2016-10-26_at_13:16:53: adding an appropriate PATH variable for use with MacPorts.
@@ -255,12 +255,12 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 # added by Anaconda3 4.2.0 installer
-export PATH="/Users/joshowens/anaconda/bin:$PATH"
+export PATH="/Users/jowens/anaconda/bin:$PATH"
 
 alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
 
 # added by travis gem
-[ -f /Users/joshowens/.travis/travis.sh ] && source /Users/joshowens/.travis/travis.sh
+[ -f /Users/jowens/.travis/travis.sh ] && source /Users/jowens/.travis/travis.sh
 
 alias ag='ag --smart-case --pager="less -R" --color-path 36 --color-match "1;46" --color-line-number 35 $@'
 
@@ -268,9 +268,9 @@ autoload bashcompinit
 bashcompinit
 
 # wp docker
-export PATH="/Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin:$PATH"
-[ -f /Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc ] && source /Users/joshowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc
-export PATH="/Users/joshowens/code/feature-dev-shared-scripts/devtools-cli:$PATH"
+export PATH="/Users/jowens/code/feature-dev-shared-scripts/di-wp-docker/bin:$PATH"
+[ -f /Users/jowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc ] && source /Users/jowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc
+export PATH="/Users/jowens/code/feature-dev-shared-scripts/devtools-cli:$PATH"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
@@ -283,3 +283,36 @@ export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/opt/node@10/bin:$PATH"
+
+# Dev Tools
+export PATH="/Users/$(whoami)/code/dealerinspire/feature-dev-shared-scripts/devtools-cli:$PATH"
+export DI_WP_DOCKER='/Users/jowens/code/dealerinspire/feature-dev-shared-scripts/di-wp-docker/'
+export DI_WP_DIR='/Users/jowens/code/dealerinspire/dealerinspire-core/'
+
+# Docker commands (Docker for the DI Platform)
+alias df="cd $DI_WP_DOCKER"
+alias dup="docker-compose -f $DI_WP_DOCKER/docker-compose.yml up -d"
+alias dssh='docker exec -it "$(docker ps --filter name=web -q)" /bin/bash'
+alias dhalt="docker-compose -f $DI_WP_DOCKER/docker-compose.yml down"
+alias ddb='mysql dealerinspire_dev -h 127.0.0.1 -P 33306 -u dealer_inspire --pass awesome1234'
+alias dddb="mysql --defaults-extra-file=$DI_WP_DOCKER/bin/.docker.sql.cnf -D dealerinspire_dev"
+alias dreboot="docker-compose -f $DI_WP_DOCKER/docker-compose.yml down && docker-compose -f $DI_WP_DOCKER/docker-compose.yml up -d"
+alias dredis='docker exec -it di-wp-docker_redis_1 redis-cli'
+alias dtoggle='docker exec -it di-wp-docker_web_1 xdebug-toggle'
+
+# This is now unnecessary, since we're using devtools-cli, but keeping it here for those that are
+#  still using the switch command
+#
+# Autocomplete my switch command
+_switch()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local DealerTheme="$DI_WP_DIR/dealer-inspire/wp-content/themes/DealerInspireDealerTheme"
+    local labels="$(hg --cwd "$DealerTheme" debugnamecomplete "$cur")"
+    COMPREPLY=(${COMPREPLY[@]:-} $(compgen -W '$labels' -- "$cur"))
+}
+complete -F _switch switch
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

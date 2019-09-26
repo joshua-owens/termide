@@ -5,7 +5,8 @@ set backspace=indent,eol,start
 set shiftwidth=2
 set encoding=utf8
 set clipboard=unnamed
-
+set timeout timeoutlen=10
+  
 " Unhide quotes
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
@@ -47,10 +48,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'joshdick/onedark.vim'
 Plugin 'fatih/vim-go'
 Plugin 'rainglow/vim'
-Plugin 'arcticicestudio/nord-vim'
+Plugin 'nightsense/snow'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,8 +67,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Color Scheme
-colorscheme nord 
-let g:airline_theme='nord'
+set background=dark
+colorscheme snow 
+"let g:airline_theme='snow'
 "set t_Co=256
 
 " Highlight ES6 template strings
@@ -77,9 +78,15 @@ hi link javaScriptTemplateVar Text
 hi link javaScriptTemplateString String
 
 " Ale
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
 
 " Emmet
 let g:user_emmet_leader_key='<Tab>'
