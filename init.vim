@@ -14,37 +14,34 @@ set magic
 call plug#begin('~/.nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'wakatime/vim-wakatime'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yggdroot/indentline'
-Plug 'scrooloose/syntastic'
 Plug 'elzr/vim-json'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ekalinin/dockerfile.vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'jdsimcoe/abstract.vim'
+Plug 'tomasiser/vim-code-dark'
 Plug 'w0rp/ale'
+Plug 'jparise/vim-graphql'
 call plug#end()
 
-" Syntax Linter
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" ESLint
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '!'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_fixers = {
+      \'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
@@ -53,8 +50,8 @@ filetype plugin indent on
 set t_Co=256
 set t_ut=
 syntax on
-colorscheme abstract
-let g:airline_theme='abstract'
+colorscheme codedark 
+let g:airline_theme='codedark'
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum]]]]
 hi Normal guibg=NONE ctermbg=NONE
@@ -87,5 +84,3 @@ let g:Powerline_symbols = 'fancy'
 set t_ZH=^[[3m
 set t_ZR=^[[23m
 
-" EditorConfig
- let g:EditorConfig_exec_path = '/usr/local/Cellar/editorconfig/0.12.2/bin/editorconfig'
