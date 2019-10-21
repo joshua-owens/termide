@@ -105,6 +105,7 @@ alias difo='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content
 alias ticket='cd ~/code/desk-stats-app/'
 alias lfp='cd ~/code/legendary-few/vagrant-local/www/wordpress-default/public_html/wp-content/plugins/wp-guild-management'
 alias pall='cd ~/Documents && yes | sh pullall.sh'
+alias gotdd='cd $GOPATH/src/github.com/joshua-owens/learn-go-with-tests'
 
 # DI Plugins
 alias plugins='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins'
@@ -277,16 +278,19 @@ export PATH="/Users/jowens/code/feature-dev-shared-scripts/devtools-cli:$PATH"
 
 # Python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# export PATH="/usr/local/opt/php@7.2/bin:$PATH"
-# export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
-export PATH="/usr/local/opt/php@7.1/bin:$PATH"
-export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+
+# PHP
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH=~/.composer/vendor/bin:$PATH
 export PATH="$PATH:/usr/local/bin"
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 
 # Dev Tools
 export PATH="/Users/$(whoami)/code/dealerinspire/feature-dev-shared-scripts/devtools-cli:$PATH"
+export DI_WP_DOCKER='/Users/jowens/code/dealerinspire/feature-dev-shared-scripts/di-wp-docker/'
+export DI_WP_DIR='/Users/jowens/code/dealerinspire/dealerinspire-core/'
+
 export DI_WP_DOCKER='/Users/jowens/code/dealerinspire/feature-dev-shared-scripts/di-wp-docker/'
 export DI_WP_DIR='/Users/jowens/code/dealerinspire/dealerinspire-core/'
 
@@ -299,7 +303,14 @@ alias ddb='mysql dealerinspire_dev -h 127.0.0.1 -P 33306 -u dealer_inspire --pas
 alias dddb="mysql --defaults-extra-file=$DI_WP_DOCKER/bin/.docker.sql.cnf -D dealerinspire_dev"
 alias dreboot="docker-compose -f $DI_WP_DOCKER/docker-compose.yml down && docker-compose -f $DI_WP_DOCKER/docker-compose.yml up -d"
 alias dredis='docker exec -it di-wp-docker_redis_1 redis-cli'
-alias dtoggle='docker exec -it di-wp-docker_web_1 xdebug-toggle'
+
+dtoggle () {
+    webcontainer="$(docker ps --filter name=di-wp-docker_web -q)"
+    docker exec -it di-wp-docker_web_1 xdebug-toggle
+    echo "restarting web container, please wait..."
+    docker restart $webcontainer
+    echo "okay, you're good to go now"
+}
 
 # This is now unnecessary, since we're using devtools-cli, but keeping it here for those that are
 #  still using the switch command
@@ -316,3 +327,5 @@ complete -F _switch switch
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"

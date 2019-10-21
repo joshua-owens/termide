@@ -49,8 +49,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'fatih/vim-go'
-Plugin 'rainglow/vim'
-Plugin 'nightsense/snow'
+Plugin 'tomasiser/vim-code-dark'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,8 +67,8 @@ filetype plugin indent on    " required
 
 " Color Scheme
 set background=dark
-colorscheme snow 
-"let g:airline_theme='snow'
+colorscheme codedark 
+"let g:airline_theme='codedark'
 "set t_Co=256
 
 " Highlight ES6 template strings
@@ -116,8 +115,8 @@ let g:ctrlp_custom_ignore = {
 
 " VDEBUG
 let g:vdebug_options={
-\    'port': 9000,
-\    'path_maps': {'/var/www': '/Volumes/Code/dealerinspire/dealerinspire-core'},
+\    'port': 9001,
+\    'path_maps': {'/var/www': '/Users/jowens/code/dealerinspire/dealerinspire-core'},
 \    'break_on_open': 0
 \}
 
