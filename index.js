@@ -2,12 +2,15 @@
 const os = require('os');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const linux = require('./linux');
+const mac = require('./mac');
 
-console.log('hello world',os.platform());
+const platform = os.platform();
 
-
-if (os.platform() === 'linux') {
+if (platform === 'linux') {
   neovim().then(() => console.log('hello?'))
+} else if (platform === 'darwin') {
+  mac();
 }
 
 async function neovim() {
@@ -21,3 +24,6 @@ async function neovim() {
   console.log('NeoVim Finished!')
 }
 
+async function nvm() {
+
+}
