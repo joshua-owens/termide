@@ -7,7 +7,50 @@ export ZSH=/Users/jowens/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="avit"
+ZSH_THEME="spaceship"
+SPACESHIP_PROMPT_ADD_NEWLINE="true"
+#SPACESHIP_CHAR_SYMBOL=" \uf0e7"
+#SPACESHIP_CHAR_PREFIX="\uf296"
+SPACESHIP_CHAR_SUFFIX=(" ")
+SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+#SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+#SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+#SPACESHIP_USER_SHOW="true"
+SPACESHIP_PROMPT_ORDER=(
+  # time        # Time stamps section (Disabled)
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  # package     # Package version (Disabled)
+  # node          # Node.js section
+  # ruby          # Ruby section
+  # elixir        # Elixir section
+  # xcode       # Xcode section (Disabled)
+  # swift         # Swift section
+  # golang        # Go section
+  # php           # PHP section
+  # rust          # Rust section
+  # haskell       # Haskell Stack section
+  # julia       # Julia section (Disabled)
+  # docker      # Docker section (Disabled)
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  conda         # conda virtualenv section
+  pyenv         # Pyenv section
+  dotnet        # .NET section
+  # ember       # Ember.js section (Disabled)
+  kubecontext   # Kubectl context section
+  terraform     # Terraform workspace section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  # vi_mode     # Vi-mode indicator (Disabled)
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -305,11 +348,11 @@ alias dreboot="docker-compose -f $DI_WP_DOCKER/docker-compose.yml down && docker
 alias dredis='docker exec -it di-wp-docker_redis_1 redis-cli'
 
 dtoggle () {
-    webcontainer="$(docker ps --filter name=di-wp-docker_web -q)"
-    docker exec -it di-wp-docker_web_1 xdebug-toggle
-    echo "restarting web container, please wait..."
-    docker restart $webcontainer
-    echo "okay, you're good to go now"
+  webcontainer="$(docker ps --filter name=di-wp-docker_web -q)"
+  docker exec -it di-wp-docker_web_1 xdebug-toggle
+  echo "restarting web container, please wait..."
+  docker restart $webcontainer
+  echo "okay, you're good to go now"
 }
 
 # This is now unnecessary, since we're using devtools-cli, but keeping it here for those that are
@@ -318,10 +361,10 @@ dtoggle () {
 # Autocomplete my switch command
 _switch()
 {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    local DealerTheme="$DI_WP_DIR/dealer-inspire/wp-content/themes/DealerInspireDealerTheme"
-    local labels="$(hg --cwd "$DealerTheme" debugnamecomplete "$cur")"
-    COMPREPLY=(${COMPREPLY[@]:-} $(compgen -W '$labels' -- "$cur"))
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  local DealerTheme="$DI_WP_DIR/dealer-inspire/wp-content/themes/DealerInspireDealerTheme"
+  local labels="$(hg --cwd "$DealerTheme" debugnamecomplete "$cur")"
+  COMPREPLY=(${COMPREPLY[@]:-} $(compgen -W '$labels' -- "$cur"))
 }
 complete -F _switch switch
 
@@ -329,3 +372,14 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+alias ls='colorls'
+
+source $(dirname $(gem which colorls))/tab_complete.sh
+PATH=$(ruby -e 'puts Gem.bindir'):$PATH
+source /Users/jowens/code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

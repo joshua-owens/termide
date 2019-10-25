@@ -18,8 +18,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'yggdroot/indentline'
-Plug 'elzr/vim-json'
+"Plug 'yggdroot/indentline'
+"Plug 'elzr/vim-json'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -27,11 +27,16 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ekalinin/dockerfile.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'tomasiser/vim-code-dark'
+"Plug 'plasticboy/vim-markdown'
+Plug 'danilo-augusto/vim-afterglow'
 Plug 'w0rp/ale'
 Plug 'jparise/vim-graphql'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
+
+" vim-go
+let g:go_fmt_command = "goimports"
 
 " ESLint
 let g:ale_sign_error = 'X'
@@ -50,11 +55,11 @@ filetype plugin indent on
 set t_Co=256
 set t_ut=
 syntax on
-colorscheme codedark 
-let g:airline_theme='codedark'
-set t_8b=^[[48;2;%lu;%lu;%lum
-set t_8f=^[[38;2;%lu;%lu;%lum]]]]
-hi Normal guibg=NONE ctermbg=NONE
+colorscheme afterglow 
+let g:airline_theme='afterglow'
+"set t_8b=^[[48;2;%lu;%lu;%lum
+"set t_8f=^[[38;2;%lu;%lu;%lum]]]]
+"hi Normal guibg=NONE ctermbg=NONE
 
 " Nerd Tree
 autocmd StdinReadPre * let s:std_in=1
