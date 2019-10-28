@@ -12,6 +12,7 @@ async function neovim() {
     command: 'sudo add-apt-repository ppa:neovim-ppa/stable -y && sudo apt-get update && sudo apt-get install neovim -y',
     successMessage: 'neovim installed!',
   });
+  await vimplug();
 }
 
 /**
@@ -21,7 +22,6 @@ async function neovim() {
  */
 async function linux() {
   await neovim();
-  await vimplug();
 }
 
 module.export = linux;

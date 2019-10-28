@@ -2,7 +2,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 /**
- * Runs an install command. 
+ * Runs an install command.
  *
  * @param {String} installingMessage message
  * @param {String} command
@@ -13,8 +13,8 @@ const exec = util.promisify(require('child_process').exec);
 async function install({ installingMessage, command, successMessage }) {
   console.log(installingMessage);
   const { stdout, stderr } = await exec(command);
-  console.log(stdout); 
+  console.log(stdout);
   console.log(successMessage);
-} 
+}
 
 module.exports = { install };

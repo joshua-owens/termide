@@ -29,6 +29,7 @@ async function neovim() {
     command: 'brew install neovim',
     successMessage: 'neovim installed!',
   });
+  await vimplug();
 }
 
 /**
@@ -36,8 +37,7 @@ async function neovim() {
  */
 async function mac() {
   await brew();
-  await neovim();
-  await vimplug();
+  neovim();
 }
 
 module.exports = mac;
