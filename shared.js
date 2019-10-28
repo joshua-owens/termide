@@ -13,13 +13,11 @@ const { install } = require('./utils');
  * @return {Promise}
  */
 async function vimplug() {
-
   const vimplugLog = '/tmp/vim-plug.log';
 
   await install({
     installingMessage: 'Installing vim-plug...',
-    command: 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+    command: 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
     successMessage: 'vim-plug installed!',
   });
 
@@ -34,7 +32,7 @@ async function vimplug() {
     output: process.stdout,
   });
 
-  reader.on('close', () => console.log('neovim plugins installed!'));
+  reader.on('close', () => console.log('\x1b[32m', 'neovim plugins installed!'));
 }
 
 module.exports = { vimplug };
