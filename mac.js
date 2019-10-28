@@ -1,22 +1,24 @@
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const { install } = require('./utils');
 
 async function mac() {
-  brew().then(() => neovim());
+  await brew();
+  await neovim();
 }
 
 async function brew() {
-  console.log('Installing Brew...');
-  const { stdout, stderr } = await exec('echo -ne "\n" |/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"');
-  console.log(stdout); 
-  console.log('Brew installed!');
+  await install({
+    installingMessage: 'Installing Brew...',
+    command: 'echo -ne "\n" |/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"',
+    successMessage: 'Brew installed!',
+  });
 }
 
 async function neovim() {
-  console.log('Instaling NeoVim with Brew...')
-  const { stdout, stderr } = await exec('brew install neovim');
-  console.log(stdout); 
-  console.log('NeoVim installed!');
+  await install({
+    installingMessage: 'Instaling neovim with Brew...',
+    command: 'brew install neovim',
+    successMessage: 'neovim installed!',
+  });
 }
 
 module.exports = mac;

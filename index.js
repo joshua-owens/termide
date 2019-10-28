@@ -13,3 +13,7 @@ if (platform === 'linux') {
   mac();
 }
 
+async function vimplug() {
+
+}
+
