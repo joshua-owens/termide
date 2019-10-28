@@ -8,22 +8,8 @@ const mac = require('./mac');
 const platform = os.platform();
 
 if (platform === 'linux') {
-  neovim().then(() => console.log('hello?'))
+  linux();
 } else if (platform === 'darwin') {
   mac();
 }
 
-async function neovim() {
-  console.log('Installing NeoVim..')
-  let { stdout, stderr } = await exec('sudo add-apt-repository ppa:neovim-ppa/stable -y && sudo apt-get update && sudo apt-get install neovim -y');
-
-  if (stderr) {
-    console.log('ERROR: ', stderr);
-  }
-  console.log(stdout)
-  console.log('NeoVim Finished!')
-}
-
-async function nvm() {
-
-}
