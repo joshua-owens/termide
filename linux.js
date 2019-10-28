@@ -1,4 +1,5 @@
 const { install } = require('./utils.js');
+const { vimplug } = require('./shared');
 
 /**
  * Runs linux specific installs
@@ -6,7 +7,8 @@ const { install } = require('./utils.js');
  * return {Promise}
  */
 async function linux() {
-  neovim()
+  await neovim();
+  await vimplug();
 }
 
 /**

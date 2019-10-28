@@ -12,10 +12,19 @@ Run the install script
 sudo ./index.js
 ```
 
+Set up neovim plugins
 
-## Included
+```
+nvim
+```
+
+
+## What's included?
 - [neovim](https://github.com/neovim/neovim): Modern refactor of vim
-- [vim-plug](https://github.com/junegunn/vim-plug): Package manager for vim/neovim
+  - [vim-plug](https://github.com/junegunn/vim-plug): Package manager for vim/neovim
+- [zsh](https://www.zsh.org/)
+  - [ohmyzsh](https://ohmyz.sh/)
+  - [Spaceship ZSH][https://github.com/denysdovhan/spaceship-prompt]
 
 ### Mac
 - [Brew](https://brew.sh/): Package manager for Mac

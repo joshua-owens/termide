@@ -1,4 +1,5 @@
 const { install } = require('./utils');
+const { vimplug } = require('./shared');
 
 /**
  * Runs mac specific installs
@@ -6,6 +7,7 @@ const { install } = require('./utils');
 async function mac() {
   await brew();
   await neovim();
+  await vimplug();
 }
 
 /**
