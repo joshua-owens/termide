@@ -2,15 +2,6 @@ const { install } = require('./utils');
 const { vimplug } = require('./shared');
 
 /**
- * Runs mac specific installs
- */
-async function mac() {
-  await brew();
-  await neovim();
-  await vimplug();
-}
-
-/**
  * Installs the Brew package manager
  *
  * @see https://brew.sh/
@@ -38,6 +29,15 @@ async function neovim() {
     command: 'brew install neovim',
     successMessage: 'neovim installed!',
   });
+}
+
+/**
+ * Runs mac specific installs
+ */
+async function mac() {
+  await brew();
+  await neovim();
+  await vimplug();
 }
 
 module.exports = mac;

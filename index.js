@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 const os = require('os');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
 const linux = require('./linux');
 const mac = require('./mac');
 
@@ -12,4 +10,3 @@ if (platform === 'linux') {
 } else if (platform === 'darwin') {
   mac();
 }
-
