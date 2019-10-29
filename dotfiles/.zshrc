@@ -2,20 +2,15 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jowens/.oh-my-zsh
+export ZSH=/Users/`whoami`/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ADD_NEWLINE="true"
-#SPACESHIP_CHAR_SYMBOL=" \uf0e7"
-#SPACESHIP_CHAR_PREFIX="\uf296"
 SPACESHIP_CHAR_SUFFIX=(" ")
 SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-#SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
-#SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-#SPACESHIP_USER_SHOW="true"
 SPACESHIP_PROMPT_ORDER=(
   # time        # Time stamps section (Disabled)
   user          # Username section
@@ -35,11 +30,11 @@ SPACESHIP_PROMPT_ORDER=(
   # haskell       # Haskell Stack section
   # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
-  conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  dotnet        # .NET section
+  # aws           # Amazon Web Services section
+  # venv          # virtualenv section
+  # conda         # conda virtualenv section
+  # pyenv         # Pyenv section
+  # dotnet        # .NET section
   # ember       # Ember.js section (Disabled)
   kubecontext   # Kubectl context section
   terraform     # Terraform workspace section
@@ -112,7 +107,9 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+alias vim="nvim"
 export EDITOR='vim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -128,63 +125,12 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 #########################################################
-# Directories
+# Apps and Tools
 #########################################################
 
-# Shortcuts to various locations
-alias core='cd ~/code/dealerinspire/dealerinspire-core/'
-alias dealer='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes/DealerInspireDealerTheme'
-alias common='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes/DealerInspireCommonTheme'
-alias themes='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes'
-alias chug='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes/DealerInspireCommonTheme && gulp'
-alias train='cd ~/code/training_tool/'
-alias codewars='cd ~/code/codewars/'
-alias bashrc='cd && code .bash_profile'
-alias dimg='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/themes/DealerInspireDealerTheme/images && open -a imageoptim .'
-alias sf='cd ~/code/salesforce-extension'
-alias openzsh='code ~/.zshrc'
-alias difo='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/di-fixed-ops'
-alias ticket='cd ~/code/desk-stats-app/'
-alias lfp='cd ~/code/legendary-few/vagrant-local/www/wordpress-default/public_html/wp-content/plugins/wp-guild-management'
-alias pall='cd ~/Documents && yes | sh pullall.sh'
-alias gotdd='cd $GOPATH/src/github.com/joshua-owens/learn-go-with-tests'
-
-# DI Plugins
-alias plugins='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins'
-alias inventory='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/inventory'
-alias vwca="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/dealerinspire-vw-canada-integration"
-alias fca="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/dealerinspire-fca-integration"
-alias specialoffers="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/dealer-inspire-special-offers"
-alias invdis="cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/plugins/dealerinspire-inventory-display"
-alias ci="code-insiders"
-# SSH Shortcuts
-alias pod1='ssh jowens@deploy.pod1.dealerinspire.com'
-alias pod2='ssh jowens@deploy.pod2.dealerinspire.com'
-alias pod3='ssh jowens@deploy.pod3.dealerinspire.com'
-alias pod4='ssh jowens@deploy.pod4.dealerinspire.com'
-alias pod5='ssh jowens@deploy.pod5.dealerinspire.com'
-alias pod6='ssh jowens@deploy.pod6.dealerinspire.com'
-alias pod7='ssh jowens@deploy.pod7.dealerinspire.com'
-alias pod8='ssh jowens@deploy.pod8.dealerinspire.com'
-alias pod9='ssh jowens@deploy.pod9.dealerinspire.com'
-alias pod10='ssh jowens@deploy.pod10.dealerinspire.com'
-alias pod11='ssh jowens@deploy.pod11.dealerinspire.com'
-alias pod12='ssh jowens@deploy.pod12.dealerinspire.com'
-alias pod13='ssh jowens@deploy.pod13.dealerinspire.com'
-alias pod14='ssh jowens@deploy.pod14.dealerinspire.com'
-alias pod15='ssh jowens@deploy.pod15.dealerinspire.com'
-alias pod16='ssh jowens@deploy.pod16.dealerinspire.com'
-alias pod17='ssh jowens@deploy.pod17.dealerinspire.com'
-alias pod18='ssh jowens@deploy.pod18.dealerinspire.com'
-alias pod19='ssh jowens@deploy.pod19.dealerinspire.com'
-alias pod20='ssh jowens@deploy.pod20.dealerinspire.com'
-alias pod21='ssh jowens@deploy.pod21.dealerinspire.com'
-alias pod22='ssh jowens@deploy.pod22.dealerinspire.com'
-alias pod23='ssh jowens@deploy.pod23.dealerinspire.com'
-alias dev='ssh jowens@a.dev.dealerinspire.com'
-alias ..='cd ..'
-
+# colorls https://github.com/athityakumar/colorls
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
@@ -193,44 +139,13 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-# Tail debug.log in the wp-content folder
-alias debuglog='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content && tail -f debug.log'
-alias dbug='open -a "Console" ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content/debug.log'
-# navigate to vagrant folder
-alias vf='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress.local'
+# ag https://github.com/ggreer/the_silver_searcher
+alias ag='ag --smart-case --pager="less -R" --color-path 36 --color-match "1;46" --color-line-number 35 $@'
 
-#########################################################
-# Apps and Tools
-#########################################################
+# nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Mercurial command line aliases
-alias hgl='hg log -G -b . -l 10' # Show the last ten revisions for your current branch in terminal
-alias hgs='hg status'
-alias hgp='hg pull -u'
-
-# GIT command line aliases
-alias gs='git status'
-alias gd='git difftool'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-alias gmls='git ls-files -m'
-alias gdls='git ls-files --deleted'
-alias gmra='git rm $(git ls-files --deleted)'
-
-# Vagrant commands
-alias vup='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress.local && vagrant up'
-alias vssh='cd ~/code/dealerinspire/vagrant/com.dealerinspire.wordpress.local && vagrant ssh'
-
-# Start a sass watch manually (works in dealer theme and common)
-alias sasswatch="sass --watch css:css --style=compressed"
-
-# Tail debug.log in the wp-content folder
-alias debuglog='cd ~/code/dealerinspire/dealerinspire-core/dealer-inspire/wp-content && tail -f debug.log'
-
-# open Google Chrome will allow file access flag (useful for ajax testing)
-alias chromesafe='open -a Google\ Chrome --args --allow-file-access-from-files'
-
-# update Quiver documentation
-alias qup='cd ~/Dropbox/di-quiver-notebooks; git pull origin master; open -a "Quiver.app"'
 
 #########################################################
 # System aliases
@@ -255,9 +170,6 @@ alias s='du -ch -d 1 .'
 # Open the iOS simulator for testing (requires xcode)
 alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/'
 
-# Open .bash_profile in sublime text for editing
-alias bashprofile="subl ~/.bash_profile"
-
 # Get whatever copy utility exists
 alias copy="pwd | pbcopy"
 
@@ -271,115 +183,6 @@ alias sr="sudo apachectl restart"
 # Flush the system DNS
 alias dns_flush="sudo discoveryutil udnsflushcaches"
 
-# Tail the PHP error log (for MAMP)
-alias php_errors='tail -f /Applications/MAMP/logs/php_error.log'
-
 # Edit local hosts file in sublime
 alias hosts="sudo subl /etc/hosts"
 
-#########################################################
-# Extras
-#########################################################
-
-# COLOR DIRECTORIES AND FILES
-export CLICOLOR=1
-#export LSCOLORS=GxFxCxDxBxegedabagaced
-
-# Setting PATH for Python 3.5
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
-
-##
-# Your previous /Users/jowens/.bash_profile file was backed up as /Users/jowens/.bash_profile.macports-saved_2016-10-26_at_13:16:53
-##
-
-# MacPorts Installer addition on 2016-10-26_at_13:16:53: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-# added by Anaconda3 4.2.0 installer
-export PATH="/Users/jowens/anaconda/bin:$PATH"
-
-alias devToolsAPI="cd ~/code/com.dealerinspire.didevtool.api/"
-
-# added by travis gem
-[ -f /Users/jowens/.travis/travis.sh ] && source /Users/jowens/.travis/travis.sh
-
-alias ag='ag --smart-case --pager="less -R" --color-path 36 --color-match "1;46" --color-line-number 35 $@'
-
-autoload bashcompinit
-bashcompinit
-
-# wp docker
-export PATH="/Users/jowens/code/feature-dev-shared-scripts/di-wp-docker/bin:$PATH"
-[ -f /Users/jowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc ] && source /Users/jowens/code/feature-dev-shared-scripts/di-wp-docker/bin/.bashrc
-export PATH="/Users/jowens/code/feature-dev-shared-scripts/devtools-cli:$PATH"
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-
-# Python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
-# PHP
-export PATH="/usr/local/opt/php@7.2/bin:$PATH"
-export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
-export PATH=~/.composer/vendor/bin:$PATH
-export PATH="$PATH:/usr/local/bin"
-export PATH="/usr/local/opt/node@10/bin:$PATH"
-
-# Dev Tools
-export PATH="/Users/$(whoami)/code/dealerinspire/feature-dev-shared-scripts/devtools-cli:$PATH"
-export DI_WP_DOCKER='/Users/jowens/code/dealerinspire/feature-dev-shared-scripts/di-wp-docker/'
-export DI_WP_DIR='/Users/jowens/code/dealerinspire/dealerinspire-core/'
-
-export DI_WP_DOCKER='/Users/jowens/code/dealerinspire/feature-dev-shared-scripts/di-wp-docker/'
-export DI_WP_DIR='/Users/jowens/code/dealerinspire/dealerinspire-core/'
-
-# Docker commands (Docker for the DI Platform)
-alias df="cd $DI_WP_DOCKER"
-alias dup="docker-compose -f $DI_WP_DOCKER/docker-compose.yml up -d"
-alias dssh='docker exec -it "$(docker ps --filter name=web -q)" /bin/bash'
-alias dhalt="docker-compose -f $DI_WP_DOCKER/docker-compose.yml down"
-alias ddb='mysql dealerinspire_dev -h 127.0.0.1 -P 33306 -u dealer_inspire --pass awesome1234'
-alias dddb="mysql --defaults-extra-file=$DI_WP_DOCKER/bin/.docker.sql.cnf -D dealerinspire_dev"
-alias dreboot="docker-compose -f $DI_WP_DOCKER/docker-compose.yml down && docker-compose -f $DI_WP_DOCKER/docker-compose.yml up -d"
-alias dredis='docker exec -it di-wp-docker_redis_1 redis-cli'
-
-dtoggle () {
-  webcontainer="$(docker ps --filter name=di-wp-docker_web -q)"
-  docker exec -it di-wp-docker_web_1 xdebug-toggle
-  echo "restarting web container, please wait..."
-  docker restart $webcontainer
-  echo "okay, you're good to go now"
-}
-
-# This is now unnecessary, since we're using devtools-cli, but keeping it here for those that are
-#  still using the switch command
-#
-# Autocomplete my switch command
-_switch()
-{
-  local cur=${COMP_WORDS[COMP_CWORD]}
-  local DealerTheme="$DI_WP_DIR/dealer-inspire/wp-content/themes/DealerInspireDealerTheme"
-  local labels="$(hg --cwd "$DealerTheme" debugnamecomplete "$cur")"
-  COMPREPLY=(${COMPREPLY[@]:-} $(compgen -W '$labels' -- "$cur"))
-}
-complete -F _switch switch
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-alias ls='colorls'
-
-source $(dirname $(gem which colorls))/tab_complete.sh
-PATH=$(ruby -e 'puts Gem.bindir'):$PATH
-source /Users/jowens/code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
