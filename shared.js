@@ -27,12 +27,26 @@ async function vimplug() {
     successMessage: '',
   });
 
+
   const reader = readline.createInterface({
     input: fs.createReadStream(vimplugLog),
     output: process.stdout,
   });
 
-  reader.on('close', () => console.log('\x1b[32m', 'neovim plugins installed!'));
+  reader.on('close', () => {
+    console.log('\x1b[32m', 'neovim plugins installed!');
+    fs.unlink(vimplugLog, (error) => {
+      if (error) {
+        throw error;
+      }
+    });
+  });
+
+  await install({
+    installingMessage: 'Installing COC JS/TS language server...',
+    command: 'nvim -c \'CocInstall -sync coc-tsserver coc-vetur coc-angular coc-json coc-html coc-css|q\'',
+    successMessage: 'JS/TS language server installed!',
+  });
 }
 
 module.exports = { vimplug };

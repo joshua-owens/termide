@@ -1,8 +1,11 @@
 
+## Features
+- Autocomplete
+
 ## Requirements
 
 - Mac OS or Ubuntu (Ubuntu WSL Works too)
-  - (Xcode)[https://apps.apple.com/us/app/xcode/id497799835?mt=12] if you are running Mac
+  - [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) if you are running Mac
 - [Node](https://nodejs.org/en/)
 
 ## Install
