@@ -31,7 +31,6 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'w0rp/ale'
 Plug 'jparise/vim-graphql'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
