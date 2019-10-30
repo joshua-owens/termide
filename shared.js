@@ -1,6 +1,26 @@
 const fs = require('fs');
+const os = require('os');
 const readline = require('readline');
 const { install } = require('./utils');
+
+/**
+ * Sets up the config file for neovim
+ *
+ * @return {Promise}
+ */
+async function initvim() {
+  const path = `${os.homedir()}/.config/nvim/init.vim`;
+
+  fs.stat(path, (error, stats) => {
+    if (error) {
+      throw error;
+    }
+
+    if (stats.isFile()) {
+      console.log('we made it!');
+    }
+  });
+}
 
 /**
  * Installs vim-plug and runs :PlugInstall
@@ -15,11 +35,14 @@ const { install } = require('./utils');
 async function vimplug() {
   const vimplugLog = '/tmp/vim-plug.log';
 
+  await initvim();
+
   await install({
     installingMessage: 'Installing vim-plug...',
     command: 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
     successMessage: 'vim-plug installed!',
   });
+
 
   await install({
     installingMessage: 'Installing neovim plugins...',

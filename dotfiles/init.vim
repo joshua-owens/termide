@@ -73,4 +73,3 @@ let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 set t_ZH=^[[3m
 set t_ZR=^[[23m
-
