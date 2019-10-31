@@ -9,16 +9,28 @@ const { install } = require('./utils');
  * @return {Promise}
  */
 async function initvim() {
-  const path = `${os.homedir()}/.config/nvim/init.vim`;
+  const path = `${os.homedir()}/.config/testnvim`;
+  const filePath = `${path}/init.vim`;
+  const termideZshrcPath = `${__dirname}/dotfiles/.zshrc`;
 
-  fs.stat(path, (error, stats) => {
-    if (error) {
-      throw error;
-    }
+  await (async () => {
+    fs.stat(filePath, (fileNotFound, stats) => {
+      if (fileNotFound) {
+        fs.mkdir(path, (errorCreatingDirs) => {
+          if (errorCreatingDirs.code !== 'EEXIST') {
+            throw errorCreatingDirs;
+          }
+        });
+      }
+      stats.isFile(); // Will throw an error if its not a file
+    });
+  })();
 
-    if (stats.isFile()) {
-      console.log('we made it!');
+  fs.appendFile(filePath, `source ${termideZshrcPath}`, (errorWritingToFile) => {
+    if (errorWritingToFile) {
+      throw errorWritingToFile;
     }
+    console.log('.zshrc sourced!');
   });
 }
 

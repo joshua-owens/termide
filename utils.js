@@ -11,11 +11,16 @@ const exec = util.promisify(require('child_process').exec);
  * @returns Promise
  */
 async function install({ installingMessage, command, successMessage }) {
-  console.log('\x1b[36m%s\x1b[0m', `${installingMessage} \x1b[0m`);
+  const resetColor = '\x1b[0m';
+  console.log(`\x1b[36m%s${resetColor}`, installingMessage);
   const { stdout, stderr } = await exec(command);
-  console.log(stdout);
-  console.log('\x1b[32m', `${successMessage} \x1b[0m`);
-}
 
+  if (stderr) {
+    console.log(`\x1b[31m${resetColor}`, stderr);
+  }
+
+  console.log(stdout);
+  console.log(`\x1b[32m${resetColor}`, successMessage);
+}
 
 module.exports = { install };
