@@ -1,5 +1,6 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const os = require('os');
 
 /**
  * Runs an install command.
@@ -23,4 +24,35 @@ async function install({ installingMessage, command, successMessage }) {
   console.log(`\x1b[32m${resetColor}`, successMessage);
 }
 
-module.exports = { install };
+/**
+ * Wrapper function around install for things that
+ * have separate installation commands for linux/mac
+ *
+ * @param {String} installingMessage message
+ * @param {String} successMessage
+ * @param {String} mac - install command for mac
+ * @param {String} linx - install command for linx
+ *
+ * @returns Promise
+ */
+async function osSpecificInstall({
+  installingMessage, successMessage, mac = null, linux = null,
+}) {
+  const platform = os.platform();
+
+  if (linux && platform === 'linux') {
+    await install({
+      installingMessage,
+      successMessage,
+      command: linux,
+    });
+  } else if (mac && platform === 'darwin') {
+    await install({
+      installingMessage,
+      successMessage,
+      command: mac,
+    });
+  }
+}
+
+module.exports = { install, osSpecificInstall };
