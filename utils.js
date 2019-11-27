@@ -12,16 +12,21 @@ const os = require('os');
  * @returns Promise
  */
 async function install({ installingMessage, command, successMessage }) {
-  const resetColor = '\x1b[0m';
-  console.log(`\x1b[36m%s${resetColor}`, installingMessage);
-  const { stdout, stderr } = await exec(command);
+  try {
+    const resetColor = '\x1b[0m';
+    console.log('command', command);
+    console.log(`\x1b[36m%s${resetColor}`, installingMessage);
+    const { stdout, stderr } = await exec(command);
 
-  if (stderr) {
-    console.log(`\x1b[31m${resetColor}`, stderr);
+    if (stderr) {
+      console.log(`\x1b[31m${resetColor}`, stderr);
+    }
+
+    console.log(stdout);
+    console.log(`\x1b[32m${resetColor}`, successMessage);
+  } catch (error) {
+    console.log('error', error);
   }
-
-  console.log(stdout);
-  console.log(`\x1b[32m${resetColor}`, successMessage);
 }
 
 /**
