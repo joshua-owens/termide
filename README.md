@@ -14,7 +14,7 @@ Run the install script
 
 ```
 sudo ./index.js
-``
+```
 
 ## What's included?
 - [neovim](https://github.com/neovim/neovim): Modern refactor of vim
@@ -28,6 +28,9 @@ sudo ./index.js
 
 ### Linux
 
+### Theme
+
+This project uses the [tender](https://github.com/jacoborus/tender.vim) color theme. The mac theme was generated via [this tool](https://github.com/lysyi3m/macos-terminal-themes#tools) originally from [this theme for iTerm2](https://github.com/tombell/tender-iterm2)
 
 ## sudo
 
