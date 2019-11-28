@@ -14,7 +14,6 @@ const os = require('os');
 async function install({ installingMessage, command, successMessage }) {
   try {
     const resetColor = '\x1b[0m';
-    console.log('command', command);
     console.log(`\x1b[36m%s${resetColor}`, installingMessage);
     const { stdout, stderr } = await exec(command);
 
