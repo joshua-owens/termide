@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { vimplug } = require('./shared');
-const { osSpecificInstall } = require('./utils');
+const { osSpecificInstall } = require('./installers/utils');
+const installers = require('./installers');
 
 /**
  * installs the brew package manager
@@ -17,24 +17,10 @@ async function brew() {
   });
 }
 
-/**
- * installs neovim via brew
- *
- * @see https://github.com/neovim/neovim
- *
- * @return {promise}
- */
-async function neovim() {
-  await osSpecificInstall({
-    installingMessage: 'instaling neovim with brew...',
-    mac: 'brew install neovim',
-    successMessage: 'neovim installed!',
-  });
-  await vimplug();
-}
-
-
 (async function run() {
   await brew();
-  neovim();
+
+  installers.forEach(({ installer }) => {
+    installer();
+  });
 }());
