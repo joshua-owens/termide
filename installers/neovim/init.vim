@@ -14,11 +14,10 @@ set magic
 call plug#begin('~/.nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-"Plug 'yggdroot/indentline'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -26,28 +25,51 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ekalinin/dockerfile.vim'
-Plug 'danilo-augusto/vim-afterglow'
+Plug 'jacoborus/tender.vim'
 Plug 'w0rp/ale'
 Plug 'jparise/vim-graphql'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'editorconfig/editorconfig-vim'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
-" ESLint
+" CoC
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" ALE
 let g:ale_sign_error = 'X'
 let g:ale_sign_warning = '!'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-let g:ale_fixers = {
-      \'javascript': ['eslint'],
-\}
 let g:ale_fix_on_save = 1
 
+" Go
+let g:go_fmt_command = "goimports"
+
+" JavaScript
+let g:ale_fixers = {
+      \'javascript': ['eslint'],
+      \'typescript': ['eslint'],
+\}
+
+" PHP
 filetype plugin indent on
 set t_Co=256
 set t_ut=
 syntax on
-colorscheme afterglow
-let g:airline_theme='afterglow'
+colorscheme tender
+let g:airline_theme='tender'
+"set t_8b=^[[48;2;%lu;%lu;%lum
+"set t_8f=^[[38;2;%lu;%lu;%lum]]]]
+"hi Normal guibg=NONE ctermbg=NONE
 
 " Nerd Tree
 autocmd StdinReadPre * let s:std_in=1
@@ -57,6 +79,9 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeShowHidden=1
+
+" TagBar
+nmap <C-o> :TagbarToggle<CR>
 
 " CTRLP
 let g:ctrlp_map = '<c-p>'

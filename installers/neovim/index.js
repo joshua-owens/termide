@@ -26,7 +26,7 @@ function ensureFilePathExists(path, file) {
  * @return {Promise}
  */
 async function initvim() {
-  const path = `${os.homedir()}/.config/testnvim`;
+  const path = `${os.homedir()}/.config/nvim`;
   const file = `${path}/init.vim`;
   const termideInitVimPath = `${__dirname}/init.vim`;
 
