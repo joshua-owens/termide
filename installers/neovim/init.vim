@@ -24,6 +24,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'ekalinin/dockerfile.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'w0rp/ale'

@@ -82,7 +82,7 @@ async function vimplug() {
       }
     });
   });
-
+  // TODO update to include styled-components
   await install({
     installingMessage: 'Installing COC JS/TS language server...',
     command: 'nvim -c \'CocInstall -sync coc-tsserver coc-vetur coc-angular coc-json coc-html coc-css|q\'',
