@@ -1,8 +1,6 @@
-<div style="text-align:center">
-Termide
+<div style="text-align:center">Termide</div>
 
 > :warning: **This project is a work in progress!**
-</div>
 
 ## Features
 - Autocomplete
