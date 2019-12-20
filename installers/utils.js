@@ -1,5 +1,6 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const { spawn } = require('child_process');
 const os = require('os');
 
 /**
@@ -12,22 +13,30 @@ const os = require('os');
  * @returns Promise
  */
 async function install({
-  installingMessage, command, successMessage,
+  installingMessage, command, args, successMessage,
 }) {
-  try {
-    const resetColor = '\x1b[0m';
-    console.log(`\x1b[36m%s${resetColor}`, installingMessage);
-    const { stdout, stderr } = await exec(command);
+  return new Promise((resolve, reject) => {
+    try {
+      const resetColor = '\x1b[0m';
+      console.log(`\x1b[36m%s${resetColor}`, installingMessage);
+      const process = spawn(command, args);
 
-    if (stderr) {
-      console.log(`\x1b[31m${resetColor}`, stderr);
+      process.stdout.on('data', (data) => {
+        console.log(`\x1b[36m${data}`);
+      });
+
+      process.stderr.on('data', (data) => {
+        console.error(`\x1b[33m${data}`);
+      });
+
+      process.on('close', (code) => {
+        console.log(`\x1b[32m${successMessage}`);
+        resolve(code);
+      });
+    } catch (error) {
+      reject(error);
     }
-
-    console.log(stdout);
-    console.log(`\x1b[32m${resetColor}`, successMessage);
-  } catch (error) {
-    console.log('error', error);
-  }
+  });
 }
 
 /**
@@ -47,16 +56,20 @@ async function osSpecificInstall({
   const platform = os.platform();
 
   if (linux && platform === 'linux') {
+    const { command, args } = linux;
     await install({
       installingMessage,
       successMessage,
-      command: linux,
+      command,
+      args,
     });
   } else if (mac && platform === 'darwin') {
+    const { command, args } = mac;
     await install({
       installingMessage,
       successMessage,
-      command: mac,
+      command,
+      args,
     });
   }
 }

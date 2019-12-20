@@ -12,7 +12,14 @@ const installers = require('./installers');
 async function brew() {
   await osSpecificInstall({
     installingMessage: 'installing brew...',
-    mac: 'echo -ne "\n" |/usr/bin/ruby -e "$(curl -fssl https://raw.githubusercontent.com/homebrew/install/master/install)"',
+    mac: {
+      command: 'echo',
+      args: ['-ne',
+        '"\n"',
+        '|/usr/bin/ruby',
+        '-e',
+        '"$(curl -fssl https://raw.githubusercontent.com/homebrew/install/master/install)"'],
+    },
     successMessage: 'brew installed!',
   });
 }

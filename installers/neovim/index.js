@@ -1,6 +1,8 @@
 const fs = require('fs');
 const os = require('os');
 const readline = require('readline');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 const { install, osSpecificInstall } = require('../utils');
 
 function ensureFilePathExists(path, file) {
@@ -57,17 +59,15 @@ async function vimplug() {
 
   await install({
     installingMessage: 'Installing vim-plug...',
-    command: 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+    command: 'curl',
+    args: ['-fLo', `${os.homedir()}/.local/share/nvim/site/autoload/plug.vim`, '--create-dirs', 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'],
     successMessage: 'vim-plug installed!',
   });
 
-
-  await install({
-    installingMessage: 'Installing neovim plugins...',
-    command: `nvim +'PlugInstall' +'%w ${vimplugLog}' +qa`,
-    successMessage: '',
-  });
-
+  // Cant call spawn on this as it exits immediately after nvim
+  // is opened not giving the process time to install the plugins
+  // and not generating the log file
+  await exec(`nvim +'PlugInstall' +'%w ${vimplugLog}' +qa`);
 
   const reader = readline.createInterface({
     input: fs.createReadStream(vimplugLog),
@@ -85,7 +85,8 @@ async function vimplug() {
   // TODO update to include styled-components
   await install({
     installingMessage: 'Installing COC JS/TS language server...',
-    command: 'nvim -c \'CocInstall -sync coc-tsserver coc-vetur coc-angular coc-json coc-html coc-css|q\'',
+    command: 'nvim',
+    args: ['-c', '\'CocInstall', '-sync', 'coc-tsserver', 'coc-vetur', 'coc-angular', 'coc-json', 'coc-html', 'coc-css|q\''],
     successMessage: 'JS/TS language server installed!',
   });
 }
@@ -100,7 +101,10 @@ async function vimplug() {
 async function neovim() {
   await osSpecificInstall({
     installingMessage: 'instaling neovim with brew...',
-    mac: 'brew install neovim',
+    mac: {
+      command: 'brew',
+      args: ['install', 'neovim'],
+    },
     successMessage: 'neovim installed!',
   });
   await vimplug();
