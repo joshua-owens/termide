@@ -1,4 +1,4 @@
-<div style="text-align:center">Termide</div>
+# Termide
 
 > :warning: **This project is a work in progress!**
 
