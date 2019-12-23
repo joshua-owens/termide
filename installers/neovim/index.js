@@ -3,24 +3,7 @@ const os = require('os');
 const readline = require('readline');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const { install, osSpecificInstall } = require('../utils');
-
-function ensureFilePathExists(path, file) {
-  return new Promise((resolve, reject) => {
-    fs.stat(file, (fileNotFound) => {
-      if (!fileNotFound) {
-        // file exists
-        resolve();
-      }
-      fs.mkdir(path, (errorCreatingDirs) => {
-        if (errorCreatingDirs && errorCreatingDirs.code !== 'EEXIST') {
-          reject(errorCreatingDirs);
-        }
-        resolve();
-      });
-    });
-  });
-}
+const { install, osSpecificInstall, ensureFilePathExists } = require('../utils');
 
 /**
  * Sets up the config file for neovim
