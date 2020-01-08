@@ -11,7 +11,7 @@ async function zshrc() {
   const file = `${os.homedir()}/.zshrc`;
   const termideZshrcPath = `${__dirname}/.zshrc`;
 
-  fs.appendFile(file, `\n . ${termideZshrcPath} \n`, (errorWritingToFile) => {
+  fs.appendFile(file, `\n. ${termideZshrcPath} \n`, (errorWritingToFile) => {
     if (errorWritingToFile) {
       throw errorWritingToFile;
     }
@@ -42,13 +42,14 @@ async function ohmyzsh() {
  * @see https://github.com/denysdovhan/spaceship-prompt
  */
 async function spaceship() {
+  const zshCustom = `${os.homedir()}/.oh-my-zsh/custom`
   await install({
     installingMessage: 'Cloning Spaceship ZSH',
     command: 'git',
     args: [
       'clone',
       'https://github.com/denysdovhan/spaceship-prompt.git',
-      '"$ZSH_CUSTOM/themes/spaceship-prompt"',
+      `${zshCustom}/themes/spaceship-prompt`,
     ],
     successMessage: 'Spaceship ZSH cloned',
   });
@@ -57,8 +58,8 @@ async function spaceship() {
     command: 'ln',
     args: [
       '-s',
-      '"$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme"',
-      '"$ZSH_CUSTOM/themes/spaceship.zsh-theme"',
+      `"${zshCustom}/themes/spaceship-prompt/spaceship.zsh-theme"`,
+      `"${zshCustom}/themes/spaceship.zsh-theme"`,
     ],
     successMessage: 'Spaceship installed'
   })
@@ -66,8 +67,8 @@ async function spaceship() {
 
 async function zsh() {
   zshrc()
-  ohmyzsh()
-  spaceship()
+  await ohmyzsh()
+  await spaceship()
 }
 
 module.exports = {
