@@ -2,7 +2,7 @@ const { osSpecificInstall } = require('../utils');
 
 async function ag() {
   await osSpecificInstall({
-    installingMessage: 'installing the ag (the silver searcher)'
+    installingMessage: 'installing the ag (the silver searcher)',
     mac: {
       command: 'brew',
       args: ['install', 'the_silver_searcher']

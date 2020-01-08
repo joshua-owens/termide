@@ -2,7 +2,7 @@ const { osSpecificInstall } = require('../utils');
 
 async function tmux() {
   await osSpecificInstall({
-    installingMessage: 'installing tmux'
+    installingMessage: 'installing tmux',
     mac: {
       command: 'brew',
       args: ['install', 'tmux']
