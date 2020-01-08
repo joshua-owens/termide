@@ -133,6 +133,7 @@ export EDITOR='vim'
 # colorls https://github.com/athityakumar/colorls
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+alias ls='colorls --sd'
 
 # Tmux
 # export TERM=xterm-256color-italic
@@ -186,3 +187,8 @@ alias dns_flush="sudo discoveryutil udnsflushcaches"
 # Edit local hosts file in sublime
 alias hosts="sudo subl /etc/hosts"
 
+
+#########################################################
+# Ruby
+#########################################################
+eval "$(rbenv init -)"
