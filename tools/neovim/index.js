@@ -69,7 +69,18 @@ async function vimplug() {
   await install({
     installingMessage: 'Installing COC JS/TS language server...',
     command: 'nvim',
-    args: ['-c', '\'CocInstall', '-sync', 'coc-tsserver', 'coc-vetur', 'coc-angular', 'coc-json', 'coc-html', 'coc-css|q\''],
+    args: [
+      '-c',
+      '\'CocInstall',
+      '-sync',
+      'coc-marketplace',
+      'coc-tsserver',
+      'coc-vetur',
+      'coc-angular',
+      'coc-json',
+      'coc-html',
+      'coc-css|q\''
+    ],
     successMessage: 'JS/TS language server installed!',
   });
 }
