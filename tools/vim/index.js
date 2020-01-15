@@ -3,7 +3,10 @@ const os = require('os');
 const readline = require('readline');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const { install, osSpecificInstall, ensureFilePathExists } = require('../utils');
+const {
+  install, osSpecificInstall,
+  ensureFilePathExists, createSymlink,
+} = require('../utils');
 
 /**
  * Sets up the config file for neovim
@@ -17,7 +20,7 @@ async function initvim() {
 
   await ensureFilePathExists(path, file);
 
-  await exec(`ln -sfn ${termideInitVimPath} ${file}`);
+  await createSymlink(termideInitVimPath, file);
 }
 
 /**
