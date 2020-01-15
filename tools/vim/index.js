@@ -17,12 +17,7 @@ async function initvim() {
 
   await ensureFilePathExists(path, file);
 
-  fs.appendFile(file, `\n so ${termideInitVimPath} \n`, (errorWritingToFile) => {
-    if (errorWritingToFile) {
-      throw errorWritingToFile;
-    }
-    console.log('init sourced!');
-  });
+  await exec(`ln -sfn ${termideInitVimPath} ${file}`);
 }
 
 /**
