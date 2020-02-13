@@ -33,6 +33,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'scrooloose/nerdcommenter'
+Plug 'nvie/vim-flake8'
 call plug#end()
 
 " CoC
