@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { osSpecificInstall } = require('./installers/utils');
-const installers = require('./installers');
+const { osSpecificInstall } = require('./tools/utils');
+const installers = require('./tools');
 
 /**
  * installs the brew package manager

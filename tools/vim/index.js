@@ -3,7 +3,10 @@ const os = require('os');
 const readline = require('readline');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const { install, osSpecificInstall, ensureFilePathExists } = require('../utils');
+const {
+  install, osSpecificInstall,
+  ensureFilePathExists, createSymlink,
+} = require('../utils');
 
 /**
  * Sets up the config file for neovim
@@ -17,12 +20,7 @@ async function initvim() {
 
   await ensureFilePathExists(path, file);
 
-  fs.appendFile(file, `\n so ${termideInitVimPath} \n`, (errorWritingToFile) => {
-    if (errorWritingToFile) {
-      throw errorWritingToFile;
-    }
-    console.log('init sourced!');
-  });
+  await createSymlink(termideInitVimPath, file);
 }
 
 /**
@@ -69,7 +67,18 @@ async function vimplug() {
   await install({
     installingMessage: 'Installing COC JS/TS language server...',
     command: 'nvim',
-    args: ['-c', '\'CocInstall', '-sync', 'coc-tsserver', 'coc-vetur', 'coc-angular', 'coc-json', 'coc-html', 'coc-css|q\''],
+    args: [
+      '-c',
+      '\'CocInstall',
+      '-sync',
+      'coc-marketplace',
+      'coc-tsserver',
+      'coc-vetur',
+      'coc-angular',
+      'coc-json',
+      'coc-html',
+      'coc-css|q\''
+    ],
     successMessage: 'JS/TS language server installed!',
   });
 }

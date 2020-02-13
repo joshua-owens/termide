@@ -1,6 +1,20 @@
 const { spawn } = require('child_process');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 const os = require('os');
 const fs = require('fs');
+
+/**
+ * Creates a symlink for the paths passed in
+ *
+ * @param {String} original
+ * @param {String} destination
+ *
+ * @return {Promise}
+ */
+function createSymlink(original, destination) {
+  return exec(`ln -sfn ${original} ${destination}`);
+}
 
 /**
  * Checks to see if a file path exists. If it does NOT
@@ -104,4 +118,5 @@ module.exports = {
   install,
   osSpecificInstall,
   ensureFilePathExists,
+  createSymlink,
 };
