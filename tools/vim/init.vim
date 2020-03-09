@@ -82,9 +82,9 @@ nnoremap <leader>cp :CtrlPagPrevious<cr>
 let g:ctrlp_ag_ignores = '--ignore .git
    \ --ignore "deps/*"
    \ --ignore "_build/*"
-   \ --ignore "node_modules/*"'
-   \ --ignore "vendor/*"'
-   \ --ignore "\v\.(exe|so|dll|class|png|jpg|jpeg)$"
+   \ --ignore "node_modules/*"
+   \ --ignore "vendor/*"
+   \ --ignore "\v\.(exe|so|dll|class|png|jpg|jpeg)$"'
  " By default ag will search from PWD
  " But you may enable one of below line to use an arbitrary directory or,
  " Using the magic word 'current-file-dir' to use current file base directory
