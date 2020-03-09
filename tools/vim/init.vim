@@ -33,7 +33,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'scrooloose/nerdcommenter'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 call plug#end()
+
+let g:notes_directories = ['~/Documents/Notes']
 
 " CoC
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -46,8 +50,8 @@ function! s:show_documentation()
 endfunction
 
 " ALE
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '!'
+let g:ale_sign_error = '⛔'
+let g:ale_sign_warning = '🚸'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_fix_on_save = 1
@@ -60,17 +64,6 @@ let g:ale_fixers = {
       \'javascript': ['eslint'],
       \'typescript': ['eslint'],
 \}
-
-" PHP
-filetype plugin indent on
-set t_Co=256
-set t_ut=
-syntax on
-colorscheme tender
-let g:airline_theme='tender'
-"set t_8b=^[[48;2;%lu;%lu;%lum
-"set t_8f=^[[38;2;%lu;%lu;%lum]]]]
-"hi Normal guibg=NONE ctermbg=NONE
 
 " Nerd Tree
 autocmd StdinReadPre * let s:std_in=1
@@ -93,7 +86,13 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 
-" Fonts
+" Theme
+filetype plugin indent on
+set t_Co=256
+set t_ut=
+syntax on
+colorscheme tender
+let g:airline_theme='tender'
 set guifont=*
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'

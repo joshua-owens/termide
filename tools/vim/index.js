@@ -7,6 +7,7 @@ const {
   install, osSpecificInstall,
   ensureFilePathExists, createSymlink,
 } = require('../utils');
+const cocExtensions = require('./cocExtensions');
 
 /**
  * Sets up the config file for neovim
@@ -63,7 +64,7 @@ async function vimplug() {
       }
     });
   });
-  // TODO update to include styled-components
+
   await install({
     installingMessage: 'Installing COC JS/TS language server...',
     command: 'nvim',
@@ -71,13 +72,8 @@ async function vimplug() {
       '-c',
       '\'CocInstall',
       '-sync',
-      'coc-marketplace',
-      'coc-tsserver',
-      'coc-vetur',
-      'coc-angular',
-      'coc-json',
-      'coc-html',
-      'coc-css|q\''
+      ...cocExtensions,
+      '|q\'',
     ],
     successMessage: 'JS/TS language server installed!',
   });
