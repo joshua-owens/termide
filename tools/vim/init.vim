@@ -16,9 +16,9 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'lokikl/vim-ctrlp-ag'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'pangloss/vim-javascript'
@@ -74,17 +74,22 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeShowHidden=1
 
-" TagBar
-nmap <C-o> :TagbarToggle<CR>
-
 " CTRLP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|vendor|docs)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
+nnoremap <c-f> :CtrlPag<cr>
+vnoremap <c-f> :CtrlPagVisual<cr>
+nnoremap <leader>ca :CtrlPagLocate
+nnoremap <leader>cp :CtrlPagPrevious<cr>
+let g:ctrlp_ag_ignores = '--ignore .git
+   \ --ignore "deps/*"
+   \ --ignore "_build/*"
+   \ --ignore "node_modules/*"'
+   \ --ignore "vendor/*"'
+   \ --ignore "\v\.(exe|so|dll|class|png|jpg|jpeg)$"
+ " By default ag will search from PWD
+ " But you may enable one of below line to use an arbitrary directory or,
+ " Using the magic word 'current-file-dir' to use current file base directory
+ " let g:ctrlp_ag_search_base = 'current-file-dir'
+ " let g:ctrlp_ag_search_base = 'app/controllers' " both relative and absolute path supported
 
 " Theme
 filetype plugin indent on
