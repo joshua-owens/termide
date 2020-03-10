@@ -35,6 +35,8 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'scrooloose/nerdcommenter'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 let g:notes_directories = ['~/Documents/Notes']
