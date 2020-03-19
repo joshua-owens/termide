@@ -1,6 +1,6 @@
 const os = require('os');
 const fs = require('fs');
-const { install } = require('../utils');
+const { install, createSymlink } = require('../utils');
 
 
 /**
@@ -11,12 +11,8 @@ async function zshrc() {
   const file = `${os.homedir()}/.zshrc`;
   const termideZshrcPath = `${__dirname}/.zshrc`;
 
-  fs.appendFile(file, `\n. ${termideZshrcPath} \n`, (errorWritingToFile) => {
-    if (errorWritingToFile) {
-      throw errorWritingToFile;
-    }
-    console.log('zshrc sourced!');
-  });
+  await createSymlink(file, destination)
+  console.log('zshrc symlinked!')
 }
 
 /**
