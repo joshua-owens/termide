@@ -36,7 +36,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-startify'
 call plug#end()
 
 let g:notes_directories = ['~/Documents/Notes']
@@ -105,3 +104,4 @@ let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 set t_ZH=^[[3m
 set t_ZR=^[[23m
+

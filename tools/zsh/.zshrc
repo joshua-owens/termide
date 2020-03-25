@@ -33,7 +33,7 @@ SPACESHIP_PROMPT_ORDER=(
   # aws           # Amazon Web Services section
   # venv          # virtualenv section
   # conda         # conda virtualenv section
-  # pyenv         # Pyenv section
+  pyenv         # Pyenv section
   # dotnet        # .NET section
   # ember       # Ember.js section (Disabled)
   kubecontext   # Kubectl context section
