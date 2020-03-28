@@ -5,16 +5,16 @@ async function ag() {
     installingMessage: 'installing the ag (the silver searcher)',
     mac: {
       command: 'brew',
-      args: ['install', 'the_silver_searcher']
+      args: ['install', 'the_silver_searcher'],
     },
     linux: {
       command: 'apt-get',
-      args: ['install', 'silversearcher-ag']
+      args: ['install', 'silversearcher-ag'],
     },
-    successMessage: 'ag installed!'
+    successMessage: 'ag installed!',
   });
 }
 
 module.exports = {
   installer: ag,
-}
+};
