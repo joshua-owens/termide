@@ -36,7 +36,7 @@ SPACESHIP_PROMPT_ORDER=(
   pyenv         # Pyenv section
   # dotnet        # .NET section
   # ember       # Ember.js section (Disabled)
-  kubecontext   # Kubectl context section
+  # kubecontext   # Kubectl context section
   terraform     # Terraform workspace section
   exec_time     # Execution time
   line_sep      # Line break
@@ -187,8 +187,3 @@ alias dns_flush="sudo discoveryutil udnsflushcaches"
 # Edit local hosts file in sublime
 alias hosts="sudo subl /etc/hosts"
 
-
-#########################################################
-# Ruby
-#########################################################
-eval "$(rbenv init -)"
