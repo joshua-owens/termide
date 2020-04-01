@@ -88,15 +88,47 @@ async function vimplug() {
  */
 async function neovim() {
   await osSpecificInstall({
-    installingMessage: 'instaling neovim with brew...',
+    installingMessage: 'Installing neovim...',
+    linux: {
+      command: 'wget',
+      args: [
+        'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage',
+        '-O',
+        '/tmp/nvim',
+      ]
+    },
+  });
+  await osSpecificInstall({
     mac: {
       command: 'brew',
       args: ['install', 'neovim'],
     },
+    linux: {
+      command: 'mv',
+      args: [
+        '/tmp/nvim',
+        '/usr/bin/nvim'
+      ]
+    },
     successMessage: 'neovim installed!',
   });
-  await vimplug();
+
+  const user = os.userInfo().username
+  await osSpecificInstall({
+    linux: {
+      command: 'sudo',
+      args: [
+        'chown',
+        `${user}:${user}`,
+        '/usr/bin/nvim',
+      ]
+    },
+    successMessage: 'changing permissions'
+  });
+  // await vimplug();
 }
+
+neovim();
 
 module.exports = {
   installer: neovim,
