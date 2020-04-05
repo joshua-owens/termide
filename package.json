@@ -6,7 +6,9 @@
   "repository": "git@github.com:joshua-owens/termide.git",
   "author": "Josh Owens <me@jowens.dev>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "ora": "^4.0.3"
+  },
   "devDependencies": {
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",

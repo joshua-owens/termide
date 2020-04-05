@@ -3,6 +3,7 @@ const os = require('os');
 const readline = require('readline');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const ora = require('ora');
 const {
   install, osSpecificInstall,
   ensureFilePathExists, createSymlink,
@@ -95,7 +96,7 @@ async function neovim() {
         'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage',
         '-O',
         '/tmp/nvim',
-      ]
+      ],
     },
   });
   await osSpecificInstall({
@@ -107,13 +108,13 @@ async function neovim() {
       command: 'mv',
       args: [
         '/tmp/nvim',
-        '/usr/bin/nvim'
-      ]
+        '/usr/bin/nvim',
+      ],
     },
     successMessage: 'neovim installed!',
   });
 
-  const user = os.userInfo().username
+  const user = os.userInfo().username;
   await osSpecificInstall({
     linux: {
       command: 'sudo',
@@ -121,23 +122,26 @@ async function neovim() {
         'chown',
         `${user}:${user}`,
         '/usr/bin/nvim',
-      ]
+      ],
     },
-    successMessage: 'changing permissions'
+    successMessage: 'changing permissions',
   });
   // await vimplug();
 }
 
 function mock() {
+  const spinner = ora('Loading unicorns').start();
+
   return new Promise((resolve) => {
-    setTimeout(function() {
+    setTimeout(() => {
+      spinner.succeed('Unicorns loaded!');
       resolve();
-    }, 5000)
-  })
+    }, 2000);
+  });
 }
 
 
 module.exports = {
   mac: mock,
   linux: mock,
-}
+};
