@@ -1,20 +1,5 @@
 const { spawn } = require('child_process');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
-const os = require('os');
 const fs = require('fs');
-
-/**
- * Creates a symlink for the paths passed in
- *
- * @param {String} original
- * @param {String} destination
- *
- * @return {Promise}
- */
-function createSymlink(original, destination) {
-  return exec(`ln -sfn ${original} ${destination}`);
-}
 
 /**
  * Checks to see if a file path exists. If it does NOT
@@ -44,21 +29,19 @@ function ensureFilePathExists(path, file) {
 }
 
 /**
- * Runs an install command.
+ * Executes a bash command
  *
- * @param {String} installingMessage message
  * @param {String} command
- * @param {String} successMessage
+ * @param {Array} args
  *
  * @returns Promise
  */
-async function install({
-  installingMessage, command, args, successMessage,
+async function bash({
+  command, args,
 }) {
   return new Promise((resolve, reject) => {
     try {
       const resetColor = '\x1b[0m';
-      console.log(`\x1b[36m%s${resetColor}`, installingMessage);
       const process = spawn(command, args);
 
       process.stdout.on('data', (data) => {
@@ -70,7 +53,6 @@ async function install({
       });
 
       process.on('close', (code) => {
-        console.log(`\x1b[32m${successMessage}`);
         resolve(code);
       });
     } catch (error) {
@@ -79,44 +61,7 @@ async function install({
   });
 }
 
-/**
- * Wrapper function around install for things that
- * have separate installation commands for linux/mac
- *
- * @param {String} installingMessage message
- * @param {String} successMessage
- * @param {String} mac - install command for mac
- * @param {String} linx - install command for linx
- *
- * @returns Promise
- */
-async function osSpecificInstall({
-  installingMessage, successMessage, mac = null, linux = null,
-}) {
-  const platform = os.platform();
-
-  if (linux && platform === 'linux') {
-    const { command, args } = linux;
-    await install({
-      installingMessage,
-      successMessage,
-      command,
-      args,
-    });
-  } else if (mac && platform === 'darwin') {
-    const { command, args } = mac;
-    await install({
-      installingMessage,
-      successMessage,
-      command,
-      args,
-    });
-  }
-}
-
 module.exports = {
-  install,
-  osSpecificInstall,
+  bash,
   ensureFilePathExists,
-  createSymlink,
 };
