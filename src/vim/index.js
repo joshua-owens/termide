@@ -128,8 +128,16 @@ async function neovim() {
   // await vimplug();
 }
 
-neovim();
+function mock() {
+  return new Promise((resolve) => {
+    setTimeout(function() {
+      resolve();
+    }, 5000)
+  })
+}
+
 
 module.exports = {
-  installer: neovim,
-};
+  mac: mock,
+  linux: mock,
+}

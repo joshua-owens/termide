@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+const os = require('os');
 const vim = require('./vim');
 const theme = require('./theme');
 const ag = require('./ag');
@@ -13,3 +15,15 @@ const installers = [
 //  tmux,
 //  colorls,
 ];
+
+(async function run() {
+  const platform = os.platform();
+  installers.forEach(({ linux, mac }) => {
+    if (platform === 'linux') {
+      linux();
+    } else if (platform === 'darwin') {
+      mac();
+    }
+  });
+})();
+
