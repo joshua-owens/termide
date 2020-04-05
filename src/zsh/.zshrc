@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-#alias vim="nvim"
+alias vim="nvim"
 export EDITOR='vim'
 
 # Compilation flags
@@ -191,4 +191,4 @@ alias hosts="sudo subl /etc/hosts"
 #########################################################
 # Ruby
 #########################################################
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"

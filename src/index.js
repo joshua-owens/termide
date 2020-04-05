@@ -5,11 +5,11 @@ const zsh = require('./zsh');
 const tmux = require('./tmux');
 const colorls = require('./colorls');
 
-module.exports = [
+const installers = [
   vim,
-  theme,
-  ag,
-  zsh,
-  tmux,
-  colorls,
+//  theme,
+//  ag,
+//  zsh,
+//  tmux,
+//  colorls,
 ];
