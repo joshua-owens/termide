@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const os = require('os');
 const vim = require('./vim');
 const theme = require('./theme');
@@ -25,5 +24,4 @@ const installers = [
       mac();
     }
   });
-})();
-
+}());
