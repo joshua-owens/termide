@@ -11,8 +11,8 @@ async function zshrc() {
   const file = `${os.homedir()}/.zshrc`;
   const termideZshrcPath = `${__dirname}/.zshrc`;
 
-  await createSymlink(file, destination)
-  console.log('zshrc symlinked!')
+  await createSymlink(file, destination);
+  console.log('zshrc symlinked!');
 }
 
 /**
@@ -38,7 +38,7 @@ async function ohmyzsh() {
  * @see https://github.com/denysdovhan/spaceship-prompt
  */
 async function spaceship() {
-  const zshCustom = `${os.homedir()}/.oh-my-zsh/custom`
+  const zshCustom = `${os.homedir()}/.oh-my-zsh/custom`;
   await install({
     installingMessage: 'Cloning Spaceship ZSH',
     command: 'git',
@@ -57,16 +57,26 @@ async function spaceship() {
       `"${zshCustom}/themes/spaceship-prompt/spaceship.zsh-theme"`,
       `"${zshCustom}/themes/spaceship.zsh-theme"`,
     ],
-    successMessage: 'Spaceship installed'
-  })
+    successMessage: 'Spaceship installed',
+  });
 }
 
 async function zsh() {
-  zshrc()
-  await ohmyzsh()
-  await spaceship()
+  zshrc();
+  await ohmyzsh();
+  await spaceship();
+}
+
+function mock() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 5000);
+  });
 }
 
 module.exports = {
-  installer: zsh,
-}
+  name: 'ZSH',
+  mac: mock,
+  linux: mock,
+};

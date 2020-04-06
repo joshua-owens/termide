@@ -41,15 +41,14 @@ async function bash({
 }) {
   return new Promise((resolve, reject) => {
     try {
-      const resetColor = '\x1b[0m';
       const process = spawn(command, args);
 
       process.stdout.on('data', (data) => {
-        console.log(`\x1b[36m${data}`);
+        // TODO create log file
       });
 
       process.stderr.on('data', (data) => {
-        console.error(`\x1b[33m${data}`);
+        // TODO create log file
       });
 
       process.on('close', (code) => {

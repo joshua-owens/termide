@@ -5,8 +5,8 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const ora = require('ora');
 const {
-  install, osSpecificInstall,
-  ensureFilePathExists, createSymlink,
+  bash,
+  ensureFilePathExists,
 } = require('../utils');
 const cocExtensions = require('./cocExtensions');
 
@@ -81,50 +81,19 @@ async function vimplug() {
 }
 
 /**
- * installs neovim via brew
+ * Neovim install for mac
  *
  * @see https://github.com/neovim/neovim
  *
- * @return {promise}
+ * @return {Promise}
  */
-async function neovim() {
-  await osSpecificInstall({
-    installingMessage: 'Installing neovim...',
-    linux: {
-      command: 'wget',
-      args: [
-        'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage',
-        '-O',
-        '/tmp/nvim',
-      ],
-    },
-  });
-  await osSpecificInstall({
-    mac: {
-      command: 'brew',
-      args: ['install', 'neovim'],
-    },
-    linux: {
-      command: 'mv',
-      args: [
-        '/tmp/nvim',
-        '/usr/bin/nvim',
-      ],
-    },
-    successMessage: 'neovim installed!',
-  });
-
-  const user = os.userInfo().username;
-  await osSpecificInstall({
-    linux: {
-      command: 'sudo',
-      args: [
-        'chown',
-        `${user}:${user}`,
-        '/usr/bin/nvim',
-      ],
-    },
-    successMessage: 'changing permissions',
+async function mac() {
+  await bash({
+    command: 'brew',
+    args: [
+      'install',
+      'neovim',
+    ],
   });
   // await vimplug();
 }
@@ -142,6 +111,7 @@ function mock() {
 
 
 module.exports = {
-  mac: mock,
+  name: 'Neovim',
+  mac,
   linux: mock,
 };
