@@ -1,23 +1,14 @@
 const os = require('os');
-const Listr = require('listr');
 const vim = require('./vim');
 const zsh = require('./zsh');
 const theme = require('./theme');
 const ag = require('./ag');
 const tmux = require('./tmux');
 const colorls = require('./colorls');
+const { spinner } = require('./utils');
 
 const installers = [
   vim,
-  zsh,
-  zsh,
-  zsh,
-  zsh,
-  zsh,
-  zsh,
-  zsh,
-  zsh,
-  zsh,
   zsh,
 //  theme,
 //  ag,
@@ -25,13 +16,21 @@ const installers = [
 //  colorls,
 ];
 
-(async function run() {
+(function run() {
   const platform = os.platform();
-  installers.forEach(async ({ name, linux, mac }) => {
+  const tasks = [];
+  installers.forEach(({ name, linux, mac }) => {
+    let task;
     if (platform === 'linux') {
-      await linux();
+      task = linux();
     } else if (platform === 'darwin') {
-      await mac();
+      task = mac();
     }
+
+    tasks.push({
+      title: name,
+      task,
+    });
   });
+  spinner(tasks, { concurrent: true });
 }());

@@ -3,7 +3,6 @@ const os = require('os');
 const readline = require('readline');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const ora = require('ora');
 const {
   bash,
   ensureFilePathExists,
@@ -99,11 +98,8 @@ async function mac() {
 }
 
 function mock() {
-  const spinner = ora('Loading unicorns').start();
-
   return new Promise((resolve) => {
     setTimeout(() => {
-      spinner.succeed('Unicorns loaded!');
       resolve();
     }, 2000);
   });
