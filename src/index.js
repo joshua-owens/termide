@@ -22,9 +22,9 @@ const installers = [
   installers.forEach(({ name, linux, mac }) => {
     let task;
     if (platform === 'linux') {
-      task = linux();
+      task = linux;
     } else if (platform === 'darwin') {
-      task = mac();
+      task = mac;
     }
 
     tasks.push({
@@ -32,5 +32,8 @@ const installers = [
       task,
     });
   });
-  spinner(tasks, { concurrent: true });
+
+  spinner(tasks, { concurrent: true }).run((err) => {
+    console.error('Task failed: ', err);
+  });
 }());
