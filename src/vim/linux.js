@@ -1,3 +1,5 @@
+const fs = require('fs');
+const https = require('https');
 const { spinner } = require('../utils');
 
 function mock() {
@@ -8,11 +10,24 @@ function mock() {
   });
 }
 
+function downloadAppImage() {
+  return new Promise((resolve) => {
+    const appImage = fs.createWriteStream('/tmp/nvim.appimage');
+    const downloadUrl = 'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage';
+
+    https.get(downloadUrl, (response) => {
+      response
+        .pipe(appImage)
+        .on('finish', resolve);
+    });
+  });
+}
+
 function linux() {
   const tasks = [
     {
-      title: 'Test 1',
-      task: mock,
+      title: 'Downloading nvim.appimage',
+      task: downloadAppImage,
     },
     {
       title: 'Test 2',
