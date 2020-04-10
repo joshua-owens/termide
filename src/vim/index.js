@@ -8,6 +8,7 @@ const {
   ensureFilePathExists,
 } = require('../utils');
 const cocExtensions = require('./cocExtensions');
+const linux = require('./linux');
 
 /**
  * Sets up the config file for neovim
@@ -97,17 +98,8 @@ async function mac() {
   // await vimplug();
 }
 
-function mock() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 2000);
-  });
-}
-
-
 module.exports = {
   name: 'Neovim',
   mac,
-  linux: mock,
+  linux,
 };
