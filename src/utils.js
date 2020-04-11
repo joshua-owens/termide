@@ -1,3 +1,4 @@
+const https = require('https');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const Listr = require('listr');
@@ -32,6 +33,24 @@ async function bash({
     } catch (error) {
       reject(error);
     }
+  });
+}
+
+function download(downloadUrl, file) {
+  return new Promise((resolve, reject) => {
+    https.get(downloadUrl, (response) => {
+      if (response.statusCode >= 300 && response.statusCode < 400) {
+        if (response.headers && response.headers.location) {
+          resolve(download(downloadUrl, file));
+        } else {
+          reject(new Error(`Couldn't get file. Status code: ${response.statusCode}`));
+        }
+      } else {
+        response
+          .pipe(file)
+          .on('finish', resolve);
+      }
+    });
   });
 }
 
@@ -78,6 +97,7 @@ function spinner(tasks, options = {}) {
 
 module.exports = {
   bash,
+  download,
   ensureFilePathExists,
   spinner,
 };

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const https = require('https');
-const { spinner } = require('../utils');
+const { download, spinner } = require('../utils');
 
 function mock() {
   return new Promise((resolve) => {
@@ -10,16 +10,25 @@ function mock() {
   });
 }
 
+function changeAppImagePermissions() {
+  return new Promise((resolve, reject) => {
+    fs.chmod('/usr/bin/vim', 755, (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
+  });
+}
+
 function downloadAppImage() {
   return new Promise((resolve) => {
-    const appImage = fs.createWriteStream('/tmp/nvim.appimage');
+    const appImage = fs.createWriteStream('/usr/bin/vim');
     const downloadUrl = 'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage';
 
-    https.get(downloadUrl, (response) => {
-      response
-        .pipe(appImage)
-        .on('finish', resolve);
-    });
+    console.log('download..');
+    download(downloadUrl, appImage)
+      .then(resolve);
   });
 }
 
@@ -30,8 +39,8 @@ function linux() {
       task: downloadAppImage,
     },
     {
-      title: 'Test 2',
-      task: mock,
+      title: 'Making nvim.appimage executable',
+      task: changeAppImagePermissions,
     },
     {
       title: 'Test 3',
