@@ -36,6 +36,20 @@ async function bash({
   });
 }
 
+/**
+ * Downloads a given url to the specified file.
+ *
+ * This function will follow redirects paths - namely used for nvim appimage
+ *
+ * Inspired by the request library
+ *
+ * @see https://github.com/request/request/blob/master/lib/redirect.js#L50
+ *
+ * @param {String} downloadUrl
+ * @param {String} file
+ *
+ * @return {Promise}
+ */
 function download(downloadUrl, file) {
   return new Promise((resolve, reject) => {
     https.get(downloadUrl, (response) => {
