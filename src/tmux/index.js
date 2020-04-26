@@ -1,29 +1,29 @@
 const os = require('os');
-const { createSymlink, osSpecificInstall, } = require('../utils');
+const { createSymlink, osSpecificInstall } = require('../utils');
 
 async function conf() {
-  const path = `${os.homedir()}/.tmux.conf`
-  const termideTmuxConf = `${__dirname}/.tmux.conf`
+  const path = `${os.homedir()}/.tmux.conf`;
+  const termideTmuxConf = `${__dirname}/.tmux.conf`;
 
-  await createSymlink(termideTmuxConf, path)
+  await createSymlink(termideTmuxConf, path);
 }
 
 async function tmux() {
-  conf()
+  conf();
   await osSpecificInstall({
     installingMessage: 'installing tmux',
     mac: {
       command: 'brew',
-      args: ['install', 'tmux']
+      args: ['install', 'tmux'],
     },
     linux: {
       command: 'apt-get',
-      args: ['install', 'tmux']
+      args: ['install', 'tmux'],
     },
-    successMessage: 'tmux installed!'
+    successMessage: 'tmux installed!',
   });
 }
 
 module.exports = {
   installer: tmux,
-}
+};
