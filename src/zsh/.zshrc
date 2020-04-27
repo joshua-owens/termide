@@ -87,6 +87,10 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+if [ -f ~/.local-zshrc ]; then
+    source ~/.local-zshrc
+fi
+
 
 #########################################################
 # Apps and Tools
