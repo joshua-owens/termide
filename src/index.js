@@ -7,6 +7,11 @@ const tmux = require('./tmux');
 const colorls = require('./colorls');
 const { spinner } = require('./utils');
 
+const prerequisites = {
+  mac: [],
+  linux: [],
+};
+
 const installers = [
   vim,
   zsh,
