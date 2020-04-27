@@ -1,6 +1,7 @@
 const fs = require('fs');
-const https = require('https');
 const { download, spinner } = require('../utils');
+
+const execPath = '/tmp/vim';
 
 function mock() {
   return new Promise((resolve) => {
@@ -12,7 +13,7 @@ function mock() {
 
 function changeAppImagePermissions() {
   return new Promise((resolve, reject) => {
-    fs.chmod('/usr/bin/vim', 755, (err) => {
+    fs.chmod(execPath, 755, (err) => {
       if (err) {
         reject(err);
       }
@@ -23,10 +24,9 @@ function changeAppImagePermissions() {
 
 function downloadAppImage() {
   return new Promise((resolve) => {
-    const appImage = fs.createWriteStream('/usr/bin/vim');
+    const appImage = fs.createWriteStream(execPath);
     const downloadUrl = 'https://github.com/neovim/neovim/releases/download/stable/nvim.appimage';
 
-    console.log('download..');
     download(downloadUrl, appImage)
       .then(resolve);
   });

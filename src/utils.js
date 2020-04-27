@@ -55,7 +55,8 @@ function download(downloadUrl, file) {
     https.get(downloadUrl, (response) => {
       if (response.statusCode >= 300 && response.statusCode < 400) {
         if (response.headers && response.headers.location) {
-          resolve(download(downloadUrl, file));
+          download(response.headers.location, file)
+            .then(resolve);
         } else {
           reject(new Error(`Couldn't get file. Status code: ${response.statusCode}`));
         }
