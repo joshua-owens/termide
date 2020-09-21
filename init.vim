@@ -26,18 +26,21 @@ autocmd FileChangedShellPost *
 " Plugins
 call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
+Plug 'ryanoasis/vim-devicons'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Theme
+colorscheme nord
 filetype plugin indent on
 syntax on
-autocmd vimenter * colorscheme gruvbox
 "let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 set guifont=*
