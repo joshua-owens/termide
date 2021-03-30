@@ -66,6 +66,7 @@ let g:ctrlp_custom_ignore = {
 \}
 
 " CoC
+let g:coc_global_extensions = ['coc-json', 'coc-phpls', 'coc-tsserver', 'coc-blade-formatter', 'coc-angular', 'coc-css', 'coc-html', 'coc-htmlhint']
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
